@@ -11,8 +11,7 @@ namespace EECloud.PlayerIO.Test
             watch.Start();
             for (int i = 1; i <= 100; i++)
             {
-                
-               var d = PlayerIO.SimpleConnect("mn1-dcmasqopteseuzd4ict5w", "guest", "guest");
+                var d = PlayerIO.SimpleConnect("mn1-dcmasqopteseuzd4ict5w", "guest", "guest");
                 Console.WriteLine(d.Token);
             }
             watch.Stop();

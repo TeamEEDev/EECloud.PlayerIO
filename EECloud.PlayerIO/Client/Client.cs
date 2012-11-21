@@ -36,16 +36,16 @@ namespace EECloud.PlayerIO
 		}
 
         public CreateJoinRoom(string roomId, string serverType, bool visible, Dictionary<string, string> roomData, Dictionary<string, string> joinData, bool isDevRoom)
-	{
-		GClass9.CreateJoinRoomArgs createJoinRoomArg = new GClass9.CreateJoinRoomArgs();
-		createJoinRoomArg.RoomId = roomId;
-		createJoinRoomArg.ServerType = serverType;
-		createJoinRoomArg.Visible = visible;
-		createJoinRoomArg.RoomData = Converter.Convert(roomData);
-		createJoinRoomArg.JoinData = Converter.Convert(joinData);
-		createJoinRoomArg.IsDevRoom = isDevRoom;
-		GClass9.CreateJoinRoomOutput createJoinRoomOutput = this.Call<GClass9.CreateJoinRoomArgs, GClass9.CreateJoinRoomOutput, PlayerIOError>(27, createJoinRoomArg);
-		return createJoinRoomOutput;
-	}
+	    {
+		    GClass9.CreateJoinRoomArgs createJoinRoomArg = new GClass9.CreateJoinRoomArgs();
+		    createJoinRoomArg.RoomId = roomId;
+		    createJoinRoomArg.ServerType = serverType;
+		    createJoinRoomArg.Visible = visible;
+		    createJoinRoomArg.RoomData = Converter.Convert(roomData);
+		    createJoinRoomArg.JoinData = Converter.Convert(joinData);
+		    createJoinRoomArg.IsDevRoom = isDevRoom;
+		    GClass9.CreateJoinRoomOutput createJoinRoomOutput = this.Call<GClass9.CreateJoinRoomArgs, GClass9.CreateJoinRoomOutput, PlayerIOError>(27, createJoinRoomArg);
+		    return createJoinRoomOutput;
+	    }
     }
 }

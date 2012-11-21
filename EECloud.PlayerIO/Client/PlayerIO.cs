@@ -5,9 +5,6 @@ using EECloud.PlayerIO.Messages;
 
 namespace EECloud.PlayerIO
 {
-    /// <summary>
-    /// THIS DOES NOT DO ANYTHING!!!!
-    /// </summary>
     public static class PlayerIO
     {
         private static readonly HttpChannel Channel = new HttpChannel();
@@ -41,7 +38,7 @@ namespace EECloud.PlayerIO
             var facebookConnectArg = new FacebookOAuthConnectArgs {GameId = gameId, AccessToken = accessToken};
             var facebookConnectOutput =
                 Channel.Request<FacebookOAuthConnectArgs, ConnectOutput, PlayerIOError>(418,
-                                                                                                     facebookConnectArg);
+                                                                                        facebookConnectArg);
             return new Client(Channel, facebookConnectOutput.Token, facebookConnectOutput.UserId);
         }
 
@@ -53,8 +50,9 @@ namespace EECloud.PlayerIO
                                            UsernameOrEmail = usernameOrEmail,
                                            Password = password
                                        };
-            var simpleConnectOutput = Channel.Request<SimpleConnectArgs, ConnectOutput, PlayerIOError>(400,
-                                                                                                       simpleConnectArg);
+            var simpleConnectOutput =
+                Channel.Request<SimpleConnectArgs, ConnectOutput, PlayerIOError>(400,
+                                                                                 simpleConnectArg);
             return new Client(Channel, simpleConnectOutput.Token, simpleConnectOutput.UserId);
         }
 
@@ -66,8 +64,9 @@ namespace EECloud.PlayerIO
                 UserId = userId,
                 GameAuthToken = gameAuthToken
             };
-            var kongregateConnectOutput = Channel.Request<KongregateConnectArgs, ConnectOutput, PlayerIOError>(400,
-                                                                                                       kongregateConnectArg);
+            var kongregateConnectOutput =
+                Channel.Request<KongregateConnectArgs, ConnectOutput, PlayerIOError>(400,
+                                                                                     kongregateConnectArg);
             return new Client(Channel, kongregateConnectOutput.Token, kongregateConnectOutput.UserId);
         }
     }

@@ -2,5 +2,8 @@
 {
     public class Connection
     {
+        public Connection(ServerEndpoint endpoint, string joinKey)
+        {
+        }
     }
 }

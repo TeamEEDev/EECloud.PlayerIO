@@ -73,6 +73,7 @@
     <Compile Include="Client\Client.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Error\ErrorCode.cs" />
+    <Compile Include="Helpers\Converter.cs" />
     <Compile Include="Helpers\HttpChannel.cs" />
     <Compile Include="Helpers\Message.cs" />
     <Compile Include="Messages\ConnectArgs.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Messages\CreateJoinRoomOutput.cs" />
     <Compile Include="Messages\Error.cs" />
     <Compile Include="Messages\FacebookOAuthConnectArgs.cs" />
+    <Compile Include="Messages\KeyValuePair.cs" />
     <Compile Include="Messages\KongregateConnectArgs.cs" />
     <Compile Include="Messages\RegistrationError.cs" />
     <Compile Include="Messages\ServerEndpoint.cs" />

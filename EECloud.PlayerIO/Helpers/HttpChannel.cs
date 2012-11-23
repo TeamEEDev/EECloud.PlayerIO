@@ -13,11 +13,6 @@ namespace EECloud.PlayerIO
         private const string EndpointUri = "http://api.playerio.com/api";
         private Dictionary<string, string> _headers;
 
-        public HttpChannel()
-        {
-
-        }
-
         public TResponse Request<TRequest, TResponse, TError>(int method, TRequest args) where TError : Exception
         {
             var r = default(TResponse);

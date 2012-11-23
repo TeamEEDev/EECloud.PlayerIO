@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ProtoBuf;
+﻿using ProtoBuf;
 
 namespace EECloud.PlayerIO.Messages
 {
@@ -10,7 +6,7 @@ namespace EECloud.PlayerIO.Messages
     public class CreateJoinRoomOutput
     {
         [ProtoMember(3)]
-        public GClass9.ServerEndpoint[] Endpoints
+        public ServerEndpoint[] Endpoints
         {
             get;
             set;
@@ -29,6 +25,5 @@ namespace EECloud.PlayerIO.Messages
             get;
             set;
         }
-
     }
 }

@@ -3,24 +3,17 @@
 namespace EECloud.PlayerIO.Messages
 {
     [ProtoContract]
-    public class KongregateConnectArgs
+    public class KeyValuePair
     {
-        [ProtoMember(3)]
-        public string GameAuthToken
-        {
-            get;
-            set;
-        }
-
         [ProtoMember(1)]
-        public string GameId
+        public string Key
         {
             get;
             set;
         }
 
         [ProtoMember(2)]
-        public string UserId
+        public string Value
         {
             get;
             set;

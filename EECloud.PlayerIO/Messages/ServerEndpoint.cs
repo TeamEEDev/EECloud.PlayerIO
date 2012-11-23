@@ -1,11 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using ProtoBuf;
 
 namespace EECloud.PlayerIO.Messages
 {
-    class ServerEndpoint
+    [ProtoContract]
+    public class ServerEndpoint
     {
+        [ProtoMember(1)]
+        public string Address
+        {
+            get;
+            set;
+        }
+
+        [ProtoMember(2)]
+        public int Port
+        {
+            get;
+            set;
+        }
     }
 }

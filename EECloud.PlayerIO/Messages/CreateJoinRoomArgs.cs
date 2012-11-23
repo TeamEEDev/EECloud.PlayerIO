@@ -1,11 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using ProtoBuf;
 
 namespace EECloud.PlayerIO.Messages
 {
-    class CreateJoinRoomArgs
+    [ProtoContract]
+    public class CreateJoinRoomArgs
     {
+        [ProtoMember(6)]
+        public bool IsDevRoom
+        {
+            get;
+            set;
+        }
+
+        [ProtoMember(5)]
+        public KeyValuePair[] JoinData
+        {
+            get;
+            set;
+        }
+
+        [ProtoMember(4)]
+        public KeyValuePair[] RoomData
+        {
+            get;
+            set;
+        }
+
+        [ProtoMember(1)]
+        public string RoomId
+        {
+            get;
+            set;
+        }
+
+        [ProtoMember(2)]
+        public string ServerType
+        {
+            get;
+            set;
+        }
+
+        [ProtoMember(3)]
+        public bool Visible
+        {
+            get;
+            set;
+        }
     }
 }

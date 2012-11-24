@@ -11,17 +11,17 @@ namespace EECloud.PlayerIO
 
         static PlayerIO()
 		{
-
+            
 		}
 
         public static Client Connect(string gameId, string connectionId, string userId, string auth)
         {
             var connectArg = new ConnectArgs
                                  {
-                                     UserId = userId,
-                                     Auth = auth,
+                                     GameId = gameId,
                                      ConnectionId = connectionId,
-                                     GameId = gameId
+                                     UserId = userId,
+                                     Auth = auth
                                  };
             var connectOutput = Channel.Request<ConnectArgs, ConnectOutput, PlayerIOError>(10, connectArg);
             return new Client(Channel, connectOutput.Token, connectOutput.UserId);

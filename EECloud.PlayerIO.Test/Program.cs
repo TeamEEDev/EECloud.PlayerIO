@@ -5,16 +5,27 @@ namespace EECloud.PlayerIO.Test
 {
     class Program
     {
+        private static readonly Stopwatch Watch = new Stopwatch();
+
         private static void Main()
         {
-            var watch = new Stopwatch();
-            watch.Start();
+            reConnect:
+            Console.CursorVisible = false;
+            Console.Write("Connecting...");
+            Watch.Start();
 
-            var d = PlayerIO.SimpleConnect("mn1-dcmasqopteseuzd4ict5w", "guest", "guest");
-            Console.WriteLine(d.Token);
-            watch.Stop();
-            Console.WriteLine(watch.ElapsedMilliseconds);
-            Console.ReadLine();
+            var client = PlayerIO.SimpleConnect("mn1-dcmasqopteseuzd4ict5w", "guest", "guest");
+            Watch.Stop();
+
+            Console.WriteLine(" Done!");
+            Console.WriteLine("Token: " + client.Token + Environment.NewLine +
+                              "Time elapsed: " + Watch.ElapsedMilliseconds);
+            Console.CursorVisible = true;
+
+            Console.ReadKey(true);
+            Watch.Reset();
+            Console.WriteLine();
+            goto reConnect;
         }
     }
 }

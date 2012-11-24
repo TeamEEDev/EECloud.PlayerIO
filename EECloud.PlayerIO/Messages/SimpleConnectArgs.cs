@@ -12,15 +12,15 @@ namespace EECloud.PlayerIO.Messages
             set;
         }
 
-        [ProtoMember(3)]
-        public string Password
+        [ProtoMember(2)]
+        public string UsernameOrEmail
         {
             get;
             set;
         }
 
-        [ProtoMember(2)]
-        public string UsernameOrEmail
+        [ProtoMember(3)]
+        public string Password
         {
             get;
             set;

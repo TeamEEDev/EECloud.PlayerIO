@@ -11,7 +11,7 @@ namespace EECloud.PlayerIO
 
         static PlayerIO()
 		{
-
+            
 		}
 
         public static Client Connect(string gameId, string connectionId, string userId, string auth)

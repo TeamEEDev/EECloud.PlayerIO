@@ -44,7 +44,7 @@ namespace EECloud.PlayerIO
 				var webException = webException1;
 				if (webException.Response == null)
 				{
-					throw new PlayerIOError(ErrorCode.GeneralError, "Connection to Player.IO WebService Unexpectly Terminated");
+					throw new PlayerIOError(ErrorCode.GeneralError, "Connection to the Player.IO WebService has just been unexpectedly terminated");
 				}
 
 			    var stream = webException.Response.GetResponseStream();
@@ -53,7 +53,7 @@ namespace EECloud.PlayerIO
 			        if (stream != null)
 			            using (var streamReader = new StreamReader(stream))
 			            {
-			                throw new PlayerIOError(ErrorCode.GeneralError, string.Concat("Error communicating with Player.IO WebService: ", streamReader.ReadToEnd()));
+			                throw new PlayerIOError(ErrorCode.GeneralError, string.Concat("Error communicating with the Player.IO WebService: ", streamReader.ReadToEnd()));
 			            }
 			    }
 			}
@@ -114,6 +114,5 @@ namespace EECloud.PlayerIO
             strs["playertoken"] = token;
             _headers = strs;
         }
-
     }
 }

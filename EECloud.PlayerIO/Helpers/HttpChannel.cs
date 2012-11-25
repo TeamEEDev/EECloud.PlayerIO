@@ -44,7 +44,7 @@ namespace EECloud.PlayerIO
 				var webException = webException1;
 				if (webException.Response == null)
 				{
-					throw new PlayerIOError(ErrorCode.GeneralError, "Connection to the Player.IO WebService has just been unexpectedly terminated");
+					throw new PlayerIOError(ErrorCode.GeneralError, "Connection to the Player.IO WebService has just been unexpectedly terminated.");
 				}
 
 			    var stream = webException.Response.GetResponseStream();
@@ -53,7 +53,7 @@ namespace EECloud.PlayerIO
 			        if (stream != null)
 			            using (var streamReader = new StreamReader(stream))
 			            {
-			                throw new PlayerIOError(ErrorCode.GeneralError, string.Concat("Error communicating with the Player.IO WebService: ", streamReader.ReadToEnd()));
+			                throw new PlayerIOError(ErrorCode.GeneralError, "Error communicating with the Player.IO WebService: " + streamReader.ReadToEnd());
 			            }
 			    }
 			}
@@ -62,7 +62,7 @@ namespace EECloud.PlayerIO
 
         private WebRequest GetRequest(int method)
         {
-            var value = WebRequest.Create(string.Concat(EndpointUri, "/", method));
+            var value = WebRequest.Create(EndpointUri + "/" + method);
             value.Timeout = 15000;
             value.Method = "POST";
             if (_headers != null)
@@ -99,7 +99,7 @@ namespace EECloud.PlayerIO
             {
                 if (typeof(TError) != typeof(PlayerIORegistrationError))
                 {
-                    return new ApplicationException(string.Concat("Unexpected error type: ", typeof(TError))) as TError;
+                    return new ApplicationException("Unexpected error type: " + typeof(TError).FullName) as TError;
                 }
                 var regError = Serializer.Deserialize<RegistrationError>(errorStream);
                 return new PlayerIORegistrationError(regError.ErrorCode, regError.Message, regError.UsernameError, regError.PasswordError, regError.EmailError, regError.CaptchaError) as TError;

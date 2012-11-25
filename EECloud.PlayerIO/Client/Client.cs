@@ -10,23 +10,15 @@ namespace EECloud.PlayerIO
     {
         private readonly HttpChannel _channel;
 
-        private readonly string _connectUserId;
-
         public ServerEndpoint DevServer;
 
-        /// <summary>
-        /// The ConnectUserId of this client
-        /// </summary>
+        private readonly string _connectUserId;
         public string ConnectUserId
         {
             get { return _connectUserId; }
         }
 
         private readonly string _token;
-
-        /// <summary>
-        /// The Token of this client
-        /// </summary>
         public string Token
         {
             get { return _token; }

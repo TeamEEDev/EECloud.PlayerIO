@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EECloud.PlayerIO", "EECloud.PlayerIO\EECloud.PlayerIO.csproj", "{4D69C60C-97F8-490D-B9B4-6AC93EDAB941}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EECloud.PlayerIO.Test", "EECloud.PlayerIO.Test\EECloud.PlayerIO.Test.csproj", "{127D3A97-CC98-43F4-95B3-39AF1951340D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EECloud.PlayerIO", "EECloud.PlayerIO\EECloud.PlayerIO.csproj", "{4D69C60C-97F8-490D-B9B4-6AC93EDAB941}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,14 +11,14 @@ Global
 		Release|Default = Release|Default
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4D69C60C-97F8-490D-B9B4-6AC93EDAB941}.Debug|Default.ActiveCfg = Debug|x86
-		{4D69C60C-97F8-490D-B9B4-6AC93EDAB941}.Debug|Default.Build.0 = Debug|x86
-		{4D69C60C-97F8-490D-B9B4-6AC93EDAB941}.Release|Default.ActiveCfg = Release|Any CPU
-		{4D69C60C-97F8-490D-B9B4-6AC93EDAB941}.Release|Default.Build.0 = Release|Any CPU
 		{127D3A97-CC98-43F4-95B3-39AF1951340D}.Debug|Default.ActiveCfg = Debug|x86
 		{127D3A97-CC98-43F4-95B3-39AF1951340D}.Debug|Default.Build.0 = Debug|x86
 		{127D3A97-CC98-43F4-95B3-39AF1951340D}.Release|Default.ActiveCfg = Release|Any CPU
 		{127D3A97-CC98-43F4-95B3-39AF1951340D}.Release|Default.Build.0 = Release|Any CPU
+		{4D69C60C-97F8-490D-B9B4-6AC93EDAB941}.Debug|Default.ActiveCfg = Debug|x86
+		{4D69C60C-97F8-490D-B9B4-6AC93EDAB941}.Debug|Default.Build.0 = Debug|x86
+		{4D69C60C-97F8-490D-B9B4-6AC93EDAB941}.Release|Default.ActiveCfg = Release|Any CPU
+		{4D69C60C-97F8-490D-B9B4-6AC93EDAB941}.Release|Default.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

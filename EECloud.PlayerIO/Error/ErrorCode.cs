@@ -1,5 +1,8 @@
 ﻿namespace EECloud.PlayerIO
 {
+    /// <summary>
+    /// The code of the error that happened.
+    /// </summary>
     public enum ErrorCode
     {
         /// <summary>

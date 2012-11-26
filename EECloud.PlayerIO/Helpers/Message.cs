@@ -16,13 +16,13 @@ namespace EECloud.PlayerIO
             get { return parameters.Count; }
         }
 
-        /// <summary>Creates a new Message.</summary>
+        /*/// <summary>Creates a new Message.</summary>
         /// <param name="type">The type of message to create.</param>
         /// <param name="parameters">A list of the data to add to the message.</param>
         /// <returns></returns>
         public static Message Create(string type, params object[] parameters)
         {
-            return null;
-        }
+            
+        }*/
     }
 }

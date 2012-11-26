@@ -11,9 +11,9 @@ namespace EECloud.PlayerIO
         public string Type;
         private readonly Dictionary<object, byte> parameters = new Dictionary<object, byte>();
 
-        public uint Count
+        public int Count
         {
-            get { return (uint)parameters.Count; }
+            get { return parameters.Count; }
         }
 
         /// <summary>Creates a new Message.</summary>
@@ -22,7 +22,7 @@ namespace EECloud.PlayerIO
         /// <returns></returns>
         public static Message Create(string type, params object[] parameters)
         {
-            
+            return null;
         }
     }
 }

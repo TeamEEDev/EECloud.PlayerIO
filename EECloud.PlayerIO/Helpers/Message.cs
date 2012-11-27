@@ -15,7 +15,7 @@ namespace EECloud.PlayerIO
         {
             get
             {
-                var output = new object[_parameters.Count - 1];
+                var output = new object[_parameters.Count];
                 for (int i = 0; i < _parameters.Count; i++)
                 {
                     output[i] = _parameters[i].Item1;
@@ -42,6 +42,45 @@ namespace EECloud.PlayerIO
         {
             return new Message(type, parameters);
         }
+
+        #region Get
+        public string GetString(int index)
+        {
+            return (string)_parameters[index].Item1;
+        }
+        public int GetInteger(int index)
+        {
+            return (int)_parameters[index].Item1;
+        }
+        public uint GetUInteger(int index)
+        {
+            return (uint)_parameters[index].Item1;
+        }
+        public long GetLong(int index)
+        {
+            return (long)_parameters[index].Item1;
+        }
+        public ulong GetULong(int index)
+        {
+            return (ulong)_parameters[index].Item1;
+        }
+        public byte[] GetByteArray(int index)
+        {
+            return (byte[])_parameters[index].Item1;
+        }
+        public float GetFloat(int index)
+        {
+            return (float)_parameters[index].Item1;
+        }
+        public double GetDouble(int index)
+        {
+            return (double)_parameters[index].Item1;
+        }
+        public bool GetBoolean(int index)
+        {
+            return (bool)_parameters[index].Item1;
+        }
+        #endregion
 
         #region Add
         public void Add(string parameter)
@@ -121,13 +160,16 @@ namespace EECloud.PlayerIO
                 {
                     _parameters.Add(Tuple.Create(obj, MessageType.Long));
                 }
-                else if (!(obj is ulong))
+                else if (obj is ulong)
+                {
+                    _parameters.Add(Tuple.Create(obj, MessageType.ULong));
+                }
+                else
                 {
                     throw new InvalidOperationException(
                         "Player.IO Messages only support objects of types: String, Integer, Boolean, Float, Double, Byte[], UInteger, Long & ULong. Type '" +
                         obj.GetType().FullName + "' is not supported.");
                 }
-                _parameters.Add(Tuple.Create(obj, MessageType.ULong));
             }
         }
         #endregion

@@ -167,16 +167,24 @@ namespace EECloud.PlayerIO
                 else
                 {
                     throw new InvalidOperationException(
-                        "Player.IO Messages only support objects of types: String, Integer, Boolean, Float, Double, Byte[], UInteger, Long & ULong. Type '" +
-                        obj.GetType().FullName + "' is not supported.");
+                        "Player.IO Messages only support objects of types: String, Integer, Boolean, Float, Double, Byte[], UInteger, Long & ULong." + Environment.NewLine +
+                        "Type '" + obj.GetType().FullName + "' is not supported.");
                 }
             }
         }
         #endregion
 
-        /*public string ToString()
+        public override string ToString()
         {
-            
-        }*/
+            string output = "Message.Type = " + Type + Environment.NewLine + "Message.Parameters";
+            for (int i = 0; i < _parameters.Count; i++)
+            {
+                output += Environment.NewLine +
+                    "  [" + i + "] (" + _parameters[i].Item1.GetType().Name + ") = " +
+                    _parameters[i].Item1;
+            }
+            return output;
+        }
     }
 }
+

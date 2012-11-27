@@ -43,6 +43,44 @@ namespace EECloud.PlayerIO
             return new Message(type, parameters);
         }
 
+        #region Add
+        public void Add(string parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.String));
+        }
+        public void Add(int parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.Integer));
+        }
+        public void Add(uint parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.UInteger));
+        }
+        public void Add(long parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.Long));
+        }
+        public void Add(ulong parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.ULong));
+        }
+        public void Add(byte[] parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.ByteArray));
+        }
+        public void Add(float parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.Float));
+        }
+        public void Add(double parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.Double));
+        }
+        public void Add(bool parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.Boolean));
+        }
+
         public void Add(params object[] parameters)
         {
             foreach (object obj in parameters)
@@ -92,6 +130,7 @@ namespace EECloud.PlayerIO
                 _parameters.Add(Tuple.Create(obj, MessageType.ULong));
             }
         }
+        #endregion
 
         /*public string ToString()
         {

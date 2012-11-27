@@ -13,9 +13,9 @@ namespace EECloud.PlayerIO
         private static readonly HttpChannel Channel = new HttpChannel();
 
         static PlayerIO()
-		{
-
-		}
+        {
+            
+        }
 
         /// <summary>
         /// Connects to a game based on Player.IO as the given user.

@@ -72,15 +72,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client\Client.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="Connection.cs" />
-    <Compile Include="Enums\MessageType.cs" />
+    <Compile Include="Helpers\MessageType.cs" />
     <Compile Include="Error\ErrorCode.cs" />
     <Compile Include="Helpers\Converter.cs" />
     <Compile Include="Helpers\HttpChannel.cs" />
     <Compile Include="Helpers\Message.cs" />
     <Compile Include="Messages\ConnectArgs.cs" />
-    <Compile Include="Client\PlayerIO.cs" />
+    <Compile Include="PlayerIO.cs" />
     <Compile Include="Error\PlayerIOError.cs" />
     <Compile Include="Error\PlayerIORegistrationError.cs" />
     <Compile Include="Messages\ConnectOutput.cs" />

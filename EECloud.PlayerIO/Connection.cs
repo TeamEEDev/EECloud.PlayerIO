@@ -17,6 +17,15 @@
     public class Connection
     {
         /// <summary>
+        /// Determines if the connection is currently connected to a remote host or not.
+        /// </summary>
+        public bool Connected
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
         /// Event fired everytime a message is received.
         /// </summary>
         public event MessageReceivedEventHandler OnMessage;
@@ -27,7 +36,13 @@
 
         public Connection(ServerEndpoint endpoint, string joinKey)
         {
-            
+            //...
+            Connected = true;
+        }
+
+        public void Disconnect()
+        {
+            Connected = false;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace EECloud.PlayerIO
 
         static PlayerIO()
 		{
-            
+
 		}
 
         /// <summary>

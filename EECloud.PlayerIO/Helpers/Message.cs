@@ -10,8 +10,8 @@ namespace EECloud.PlayerIO
     /// </summary>
     public class Message : IEnumerable<object>
     {
-        private readonly List<Tuple<object, MessageType>> _parameters = new List<Tuple<object, MessageType>>();
         public string Type { get; private set; }
+        private readonly List<Tuple<object, MessageType>> _parameters = new List<Tuple<object, MessageType>>();
 
         /// <summary>Creates a new Message.</summary>
         /// <param name="type">The type of message to create.</param>
@@ -73,12 +73,13 @@ namespace EECloud.PlayerIO
         #endregion
 
         #region Add
+        private const string ParameterNullText = "Can't add null values to Player.IO Messages.";
 
         public void Add(object obj)
         {
             if (obj == null)
             {
-                throw new ArgumentNullException("Can't add null values to Player.IO Messages.");
+                throw new ArgumentNullException(ParameterNullText);
             }
             if (obj is string)
             {
@@ -131,11 +132,59 @@ namespace EECloud.PlayerIO
                 Add(obj);
             }
         }
+
+        #region Separate methods for allowed object types
+        public void Add(string parameter)
+        {
+            if (parameter == null)
+            {
+                throw new ArgumentNullException(ParameterNullText);
+            }
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.String));
+        }
+        public void Add(int parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.Integer));
+        }
+        public void Add(uint parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.UInteger));
+        }
+        public void Add(long parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.Long));
+        }
+        public void Add(ulong parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.ULong));
+        }
+        public void Add(byte[] parameter)
+        {
+            if (parameter == null)
+            {
+                throw new ArgumentNullException(ParameterNullText);
+            }
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.ByteArray));
+        }
+        public void Add(float parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.Float));
+        }
+        public void Add(double parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.Double));
+        }
+        public void Add(bool parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.Boolean));
+        }
+        #endregion
         #endregion
 
         public override string ToString()
         {
-            string output = "Message.Type = " + Type + Environment.NewLine + "Message.Parameters";
+            string output = "Message.Type = " + Type + Environment.NewLine +
+                "Message.Parameters";
             for (int i = 0; i < _parameters.Count; i++)
             {
                 output += Environment.NewLine +
@@ -156,4 +205,3 @@ namespace EECloud.PlayerIO
         }
     }
 }
-

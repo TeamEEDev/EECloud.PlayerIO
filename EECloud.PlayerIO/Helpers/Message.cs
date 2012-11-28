@@ -10,8 +10,8 @@ namespace EECloud.PlayerIO
     /// </summary>
     public class Message : IEnumerable<object>
     {
-        private readonly List<Tuple<object, MessageType>> _parameters = new List<Tuple<object, MessageType>>();
         public string Type { get; private set; }
+        private readonly List<Tuple<object, MessageType>> _parameters = new List<Tuple<object, MessageType>>();
 
         /// <summary>Creates a new Message.</summary>
         /// <param name="type">The type of message to create.</param>
@@ -73,69 +73,111 @@ namespace EECloud.PlayerIO
         #endregion
 
         #region Add
+        private const string ParameterNullText = "Can't add null values to Player.IO Messages.";
 
-        public void Add(object obj)
+        public void Add(string parameter)
         {
-            if (obj == null)
+            if (parameter == null)
             {
-                throw new ArgumentNullException("Can't add null values to Player.IO Messages.");
+                throw new ArgumentNullException(ParameterNullText);
             }
-            if (obj is string)
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.String));
+        }
+        public void Add(int parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.Integer));
+        }
+        public void Add(uint parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.UInteger));
+        }
+        public void Add(long parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.Long));
+        }
+        public void Add(ulong parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.ULong));
+        }
+        public void Add(byte[] parameter)
+        {
+            if (parameter == null)
             {
-                _parameters.Add(Tuple.Create(obj, MessageType.String));
+                throw new ArgumentNullException(ParameterNullText);
             }
-            else if (obj is int)
-            {
-                _parameters.Add(Tuple.Create(obj, MessageType.Integer));
-            }
-            else if (obj is bool)
-            {
-                _parameters.Add(Tuple.Create(obj, MessageType.Boolean));
-            }
-            else if (obj is float)
-            {
-                _parameters.Add(Tuple.Create(obj, MessageType.Float));
-            }
-            else if (obj is double)
-            {
-                _parameters.Add(Tuple.Create(obj, MessageType.Double));
-            }
-            else if (obj is byte[])
-            {
-                _parameters.Add(Tuple.Create(obj, MessageType.ByteArray));
-            }
-            else if (obj is uint)
-            {
-                _parameters.Add(Tuple.Create(obj, MessageType.UInteger));
-            }
-            else if (obj is long)
-            {
-                _parameters.Add(Tuple.Create(obj, MessageType.Long));
-            }
-            else if (obj is ulong)
-            {
-                _parameters.Add(Tuple.Create(obj, MessageType.ULong));
-            }
-            else
-            {
-                throw new InvalidOperationException(
-                    "Player.IO Messages only support objects of types: String, Integer, Boolean, Float, Double, Byte[], UInteger, Long & ULong." + Environment.NewLine +
-                    "Type '" + obj.GetType().FullName + "' is not supported.");
-            }
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.ByteArray));
+        }
+        public void Add(float parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.Float));
+        }
+        public void Add(double parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.Double));
+        }
+        public void Add(bool parameter)
+        {
+            _parameters.Add(Tuple.Create((object)parameter, MessageType.Boolean));
         }
 
         public void Add(params object[] parameters)
         {
             foreach (var obj in parameters)
             {
-                Add(obj);
+                if (obj == null)
+                {
+                    throw new ArgumentNullException(ParameterNullText);
+                }
+                if (obj is string)
+                {
+                    _parameters.Add(Tuple.Create(obj, MessageType.String));
+                }
+                else if (obj is int)
+                {
+                    _parameters.Add(Tuple.Create(obj, MessageType.Integer));
+                }
+                else if (obj is bool)
+                {
+                    _parameters.Add(Tuple.Create(obj, MessageType.Boolean));
+                }
+                else if (obj is float)
+                {
+                    _parameters.Add(Tuple.Create(obj, MessageType.Float));
+                }
+                else if (obj is double)
+                {
+                    _parameters.Add(Tuple.Create(obj, MessageType.Double));
+                }
+                else if (obj is byte[])
+                {
+                    _parameters.Add(Tuple.Create(obj, MessageType.ByteArray));
+                }
+                else if (obj is uint)
+                {
+                    _parameters.Add(Tuple.Create(obj, MessageType.UInteger));
+                }
+                else if (obj is long)
+                {
+                    _parameters.Add(Tuple.Create(obj, MessageType.Long));
+                }
+                else if (obj is ulong)
+                {
+                    _parameters.Add(Tuple.Create(obj, MessageType.ULong));
+                }
+                else
+                {
+                    throw new InvalidOperationException(
+                        "Player.IO Messages only support objects of types: String, Integer, Boolean, Float, Double, Byte[], UInteger, Long & ULong." + Environment.NewLine +
+                        "Type '" + obj.GetType().FullName + "' is not supported.");
+                }
             }
         }
         #endregion
 
         public override string ToString()
         {
-            string output = "Message.Type = " + Type + Environment.NewLine + "Message.Parameters";
+            string output = "Message.Type = " + Type + Environment.NewLine +
+                "Message.Parameters";
             for (int i = 0; i < _parameters.Count; i++)
             {
                 output += Environment.NewLine +
@@ -156,4 +198,3 @@ namespace EECloud.PlayerIO
         }
     }
 }
-

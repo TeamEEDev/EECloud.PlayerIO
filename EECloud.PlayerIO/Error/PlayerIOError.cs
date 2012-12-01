@@ -18,8 +18,7 @@ namespace EECloud.PlayerIO
         /// </summary>
         /// <param name="errorCode">The code of the error that happened.</param>
         /// <param name="message">The error explained by words.</param>
-        public PlayerIOError(ErrorCode errorCode, string message)
-            : base(message)
+        public PlayerIOError(ErrorCode errorCode, string message) : base(message)
         {
             ErrorCode = errorCode;
         }

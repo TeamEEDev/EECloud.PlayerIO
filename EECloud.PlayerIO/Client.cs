@@ -53,10 +53,10 @@ namespace EECloud.PlayerIO
                                             Visible = visible,
                                             RoomData = Converter.Convert(roomData),
                                             JoinData = Converter.Convert(joinData),
-                                            IsDevRoom = DevServer != null
+                                            IsDevRoom = DevelopmentServer != null
                                         };
             CreateJoinRoomOutput createJoinRoomOutput = _channel.Request<CreateJoinRoomArgs, CreateJoinRoomOutput, PlayerIOError>(27, createJoinRoomArg);
-            ServerEndpoint serverEndpoint = DevServer ?? Converter.Convert(createJoinRoomOutput.Endpoints[0]);
+            ServerEndpoint serverEndpoint = DevelopmentServer ?? Converter.Convert(createJoinRoomOutput.Endpoints[0]);
             return new Connection(serverEndpoint, createJoinRoomOutput.JoinKey);
         }
     }

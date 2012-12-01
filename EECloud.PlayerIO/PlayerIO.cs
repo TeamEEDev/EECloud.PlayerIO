@@ -45,7 +45,8 @@ namespace EECloud.PlayerIO
         /// <param name="userId">The UserID to use when generating the hash</param>
         /// <param name="sharedSecret">The shared secret to use when generating the hash. This must be the same value as the one given to a connection in the admin panel.</param>
         /// <returns>The generated auth hash</returns>
-        public static string CalcAuth(string userId, string sharedSecret) {
+        public static string CalcAuth(string userId, string sharedSecret)
+        {
             var unixTime = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
             var hmac = new HMACSHA1(Encoding.UTF8.GetBytes(sharedSecret)).ComputeHash(Encoding.UTF8.GetBytes(unixTime + ":" + userId));
             return unixTime + ":" + BitConverter.ToString(hmac).Replace("-", "").ToLowerInvariant();

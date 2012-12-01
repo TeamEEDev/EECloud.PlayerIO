@@ -13,8 +13,8 @@ namespace EECloud.PlayerIO.Test
             Console.CursorVisible = false;
             Console.Write("Connecting...");
             Watch.Start();
-
-            var client = PlayerIO.SimpleConnect("mn1-dcmasqopteseuzd4ict5w", "guest", "guest");
+            
+            var client = PlayerIO.QuickConnect.SimpleConnect("mn1-dcmasqopteseuzd4ict5w", "guest", "guest");
             Watch.Stop();
 
             Console.WriteLine(" Done!");

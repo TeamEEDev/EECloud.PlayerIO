@@ -43,7 +43,15 @@ namespace EECloud.PlayerIO
         /// <returns>A new instance of Connection if connecting to the room was successful.</returns>
         public Connection CreateJoinRoom(string roomId, string serverType, bool visible, Dictionary<string, string> roomData, Dictionary<string, string> joinData)
         {
-            var createJoinRoomArg = new CreateJoinRoomArgs {RoomId = roomId, ServerType = serverType, Visible = visible, RoomData = Converter.Convert(roomData), JoinData = Converter.Convert(joinData), IsDevRoom = DevServer != null};
+            var createJoinRoomArg = new CreateJoinRoomArgs
+                                        {
+                                            RoomId = roomId,
+                                            ServerType = serverType,
+                                            Visible = visible,
+                                            RoomData = Converter.Convert(roomData),
+                                            JoinData = Converter.Convert(joinData),
+                                            IsDevRoom = DevServer != null
+                                        };
             CreateJoinRoomOutput createJoinRoomOutput = _channel.Request<CreateJoinRoomArgs, CreateJoinRoomOutput, PlayerIOError>(27, createJoinRoomArg);
             ServerEndpoint serverEndpoint = DevServer ?? Converter.Convert(createJoinRoomOutput.Endpoints[0]);
             return new Connection(serverEndpoint, createJoinRoomOutput.JoinKey);

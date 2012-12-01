@@ -16,18 +16,16 @@ namespace EECloud.PlayerIO
         public TResponse Request<TRequest, TResponse, TError>(int method, TRequest args) where TError : Exception
         {
             var r = default(TResponse);
-
             var request = GetRequest(method);
-			var requestStream = request.GetRequestStream();
-			using (requestStream)
+
+			using (var requestStream = request.GetRequestStream())
 			{
 				Serializer.Serialize(requestStream, args);
 			}
+
 			try
 			{
-				var response = request.GetResponse();
-				var responseStream = response.GetResponseStream();
-				using (responseStream)
+                using (var responseStream = request.GetResponse().GetResponseStream())
 				{
 					if (ReadHeader(responseStream))
 					{
@@ -39,9 +37,8 @@ namespace EECloud.PlayerIO
 					}
 				}
 			}
-			catch (WebException webException1)
+			catch (WebException webException)
 			{
-				var webException = webException1;
 				if (webException.Response == null)
 				{
 					throw new PlayerIOError(ErrorCode.GeneralError, "Connection to the Player.IO WebService has just been unexpectedly terminated.");
@@ -57,6 +54,7 @@ namespace EECloud.PlayerIO
 			            }
 			    }
 			}
+
 			return r;
 		}
 

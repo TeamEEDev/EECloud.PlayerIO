@@ -10,7 +10,10 @@ namespace EECloud.PlayerIO
     {
         private readonly HttpChannel _channel;
 
-        public ServerEndpoint DevServer;
+        /// <summary>
+        /// If not null, rooms will be created on the development server at the address defined by the server endpoint, instead of using the live Player.IO servers.
+        /// </summary>
+        public ServerEndpoint DevelopmentServer;
 
         private readonly string _connectUserId;
         public string ConnectUserId

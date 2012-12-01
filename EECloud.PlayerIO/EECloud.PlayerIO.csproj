@@ -95,6 +95,7 @@
     <Compile Include="Messages\SimpleConnectArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\ServerEndpoint.cs" />
+    <Compile Include="QuickConnect.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\protobuf-net.dll" />

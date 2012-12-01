@@ -5,8 +5,8 @@ namespace EECloud.PlayerIO.Messages
     [ProtoContract]
     public class CreateJoinRoomOutput
     {
-        [ProtoMember(3)]
-        public ServerEndpoint[] Endpoints
+        [ProtoMember(1)]
+        public string RoomId
         {
             get;
             set;
@@ -19,8 +19,8 @@ namespace EECloud.PlayerIO.Messages
             set;
         }
 
-        [ProtoMember(1)]
-        public string RoomId
+        [ProtoMember(3)]
+        public ServerEndpoint[] Endpoints
         {
             get;
             set;

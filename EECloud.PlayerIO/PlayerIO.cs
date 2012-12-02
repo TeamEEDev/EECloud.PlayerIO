@@ -12,7 +12,11 @@ namespace EECloud.PlayerIO
     {
         private static readonly HttpChannel Channel = new HttpChannel();
 
-        public static readonly QuickConnect QuickConnect = new QuickConnect(Channel);
+        private static readonly Lazy<QuickConnect> _quickConnect = new Lazy<QuickConnect>(() => new QuickConnect(Channel));
+        public static QuickConnect QuickConnect
+        {
+            get { return _quickConnect.Value; }
+        }
 
         /// <summary>
         /// Connects to a game based on Player.IO as the given user.

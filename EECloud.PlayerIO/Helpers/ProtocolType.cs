@@ -5,7 +5,7 @@
         Binary,
         Http = 71,
         Auto = 255,
-        WebsocketRfc6544Binary = 11,
-        WebsocketV76Base64
+        WebSocketRfc6455Binary = 11,
+        WebSocketV76Base64
     }
 }

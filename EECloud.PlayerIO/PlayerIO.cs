@@ -12,7 +12,7 @@ namespace EECloud.PlayerIO
     {
         private static readonly HttpChannel Channel = new HttpChannel();
 
-        private static readonly Lazy<QuickConnect> _quickConnect = new Lazy<QuickConnect>();
+        private static readonly Lazy<QuickConnect> _quickConnect = new Lazy<QuickConnect>(() => new QuickConnect(Channel)); 
 
         public static QuickConnect QuickConnect
         {

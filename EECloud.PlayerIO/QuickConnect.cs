@@ -9,7 +9,7 @@ namespace EECloud.PlayerIO
     {
         private readonly HttpChannel _channel;
 
-        private QuickConnect(HttpChannel channel)
+        internal QuickConnect(HttpChannel channel)
         {
             _channel = channel;
         }

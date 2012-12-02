@@ -12,6 +12,8 @@ namespace EECloud.PlayerIO
     {
         private static readonly HttpChannel Channel = new HttpChannel();
 
+        public static readonly QuickConnect QuickConnect = new QuickConnect(Channel);
+
         /// <summary>
         /// Connects to a game based on Player.IO as the given user.
         /// </summary>
@@ -45,66 +47,6 @@ namespace EECloud.PlayerIO
             var unixTime = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
             var hmac = new HMACSHA1(Encoding.UTF8.GetBytes(sharedSecret)).ComputeHash(Encoding.UTF8.GetBytes(unixTime + ":" + userId));
             return unixTime + ":" + BitConverter.ToString(hmac).Replace("-", "").ToLowerInvariant();
-        }
-
-        public static class QuickConnect
-        {
-            /// <summary>
-            /// Connects to a game based on Player.IO as a simple user.
-            /// </summary>
-            /// <param name="gameId">The ID of the game you wish to connect to. This value can be found in the admin panel.</param>
-            /// <param name="usernameOrEmail">The username or e-mail address of the user you wish to authenticate.</param>
-            /// <param name="password">The password of the user you wish to authenticate.</param>
-            /// <returns>A new instance of Client if logging in was successful.</returns>
-            public static Client SimpleConnect(string gameId, string usernameOrEmail, string password)
-            {
-                var simpleConnectArg = new SimpleConnectArgs
-                                           {
-                                               GameId = gameId,
-                                               UsernameOrEmail = usernameOrEmail,
-                                               Password = password
-                                           };
-                var simpleConnectOutput =
-                    Channel.Request<SimpleConnectArgs, ConnectOutput, PlayerIOError>(400,
-                                                                                     simpleConnectArg);
-                return new Client(Channel, simpleConnectOutput.Token, simpleConnectOutput.UserId);
-            }
-
-            /// <summary>
-            /// Connects to a game based on Player.IO as a Facebook user using a Facebook access token.
-            /// </summary>
-            /// <param name="gameId">The ID of the game you wish to connect to. This value can be found in the admin panel.</param>
-            /// <param name="accessToken">The Facebook access token of the user you wish to authenticate.</param>
-            /// <returns>A new instance of Client if logging in was successful.</returns>
-            public static Client FacebookOAuthConnect(string gameId, string accessToken)
-            {
-                var facebookConnectArg = new FacebookOAuthConnectArgs { GameId = gameId, AccessToken = accessToken };
-                var facebookConnectOutput =
-                    Channel.Request<FacebookOAuthConnectArgs, ConnectOutput, PlayerIOError>(418,
-                                                                                            facebookConnectArg);
-                return new Client(Channel, facebookConnectOutput.Token, facebookConnectOutput.UserId);
-            }
-
-            /// <summary>
-            /// Connects to a game based on Player.IO as a Kongregate user.
-            /// </summary>
-            /// <param name="gameId">The ID of the game you wish to connect to. This value can be found in the admin panel.</param>
-            /// <param name="userId">The Kongregate user ID of the user you wish to authenticate.</param>
-            /// <param name="gameAuthToken">The Kongregate auth token of the game you wish to connect to (depends on the user you wish to authenticate).</param>
-            /// <returns>A new instance of Client if logging in was successful.</returns>
-            public static Client KongregateConnect(string gameId, string userId, string gameAuthToken)
-            {
-                var kongregateConnectArg = new KongregateConnectArgs
-                {
-                    GameId = gameId,
-                    UserId = userId,
-                    GameAuthToken = gameAuthToken
-                };
-                var kongregateConnectOutput =
-                    Channel.Request<KongregateConnectArgs, ConnectOutput, PlayerIOError>(400,
-                                                                                         kongregateConnectArg);
-                return new Client(Channel, kongregateConnectOutput.Token, kongregateConnectOutput.UserId);
-            }
         }
     }
 }

@@ -53,11 +53,30 @@ namespace EECloud.PlayerIO
                                             Visible = visible,
                                             RoomData = Converter.Convert(roomData),
                                             JoinData = Converter.Convert(joinData),
-                                            IsDevRoom = DevServer != null
+                                            IsDevRoom = DevelopmentServer != null
                                         };
             CreateJoinRoomOutput createJoinRoomOutput = _channel.Request<CreateJoinRoomArgs, CreateJoinRoomOutput, PlayerIOError>(27, createJoinRoomArg);
-            ServerEndpoint serverEndpoint = DevServer ?? Converter.Convert(createJoinRoomOutput.Endpoints[0]);
+            ServerEndpoint serverEndpoint = DevelopmentServer ?? Converter.Convert(createJoinRoomOutput.Endpoints[0]);
             return new Connection(serverEndpoint, createJoinRoomOutput.JoinKey);
+        }
+
+        /// <summary>
+        /// Joins a running multiplayer room.
+        /// </summary>
+        /// <param name="roomId">The ID of the room you wish to join.</param>
+        /// <param name="joinData">Data to send to the room with additional information about the join.</param>
+        /// <returns>A new instance of Connection if joining the room was successful.</returns>
+        public Connection JoinRoom(string roomId, Dictionary<string, string> joinData)
+        {
+            var joinRoomArg = new JoinRoomArgs
+            {
+                RoomId = roomId,
+                JoinData = Converter.Convert(joinData),
+                IsDevRoom = DevelopmentServer != null
+            };
+            JoinRoomOutput joinRoomOutput = _channel.Request<JoinRoomArgs, JoinRoomOutput, PlayerIOError>(24, joinRoomArg);
+            ServerEndpoint serverEndpoint = DevelopmentServer ?? Converter.Convert(joinRoomOutput.Endpoints[0]);
+            return new Connection(serverEndpoint, joinRoomOutput.JoinKey);
         }
     }
 }

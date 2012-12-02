@@ -74,12 +74,12 @@
   <ItemGroup>
     <Compile Include="Client.cs" />
     <Compile Include="Connection.cs" />
-    <Compile Include="Helpers\MessageType.cs" />
+    <Compile Include="Enums\MessageType.cs" />
     <Compile Include="Error\ErrorCode.cs" />
     <Compile Include="Helpers\Converter.cs" />
     <Compile Include="Helpers\HttpChannel.cs" />
     <Compile Include="Helpers\Message.cs" />
-    <Compile Include="Helpers\ProtocolType.cs" />
+    <Compile Include="Enums\ProtocolType.cs" />
     <Compile Include="Messages\ConnectArgs.cs" />
     <Compile Include="PlayerIO.cs" />
     <Compile Include="Error\PlayerIOError.cs" />

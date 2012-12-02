@@ -79,6 +79,7 @@
     <Compile Include="Helpers\Converter.cs" />
     <Compile Include="Helpers\HttpChannel.cs" />
     <Compile Include="Helpers\Message.cs" />
+    <Compile Include="Helpers\ProtocolType.cs" />
     <Compile Include="Messages\ConnectArgs.cs" />
     <Compile Include="PlayerIO.cs" />
     <Compile Include="Error\PlayerIOError.cs" />

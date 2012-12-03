@@ -81,6 +81,8 @@
     <Compile Include="Helpers\Message.cs" />
     <Compile Include="Enums\ProtocolType.cs" />
     <Compile Include="Messages\ConnectArgs.cs" />
+    <Compile Include="Messages\ListRoomsArgs.cs" />
+    <Compile Include="Messages\ListRoomsOutput.cs" />
     <Compile Include="Messages\JoinRoomArgs.cs" />
     <Compile Include="Messages\JoinRoomOutput.cs" />
     <Compile Include="Helpers\RoomInfo.cs" />

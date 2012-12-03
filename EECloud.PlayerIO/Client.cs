@@ -78,5 +78,19 @@ namespace EECloud.PlayerIO
             ServerEndpoint serverEndpoint = DevelopmentServer ?? Converter.Convert(joinRoomOutput.Endpoints[0]);
             return new Connection(serverEndpoint, joinRoomOutput.JoinKey);
         }
+
+        public RoomInfo[] ListRooms(string roomType, Dictionary<string, string> searchCriteria, int resultLimit, int resultOffset, bool onlyDevRooms = false)
+        {
+            var listRoomsArg = new ListRoomsArgs
+            {
+                RoomType = roomType,
+                SearchCriteria = Converter.Convert(searchCriteria),
+                ResultLimit = resultLimit,
+                ResultOffset = resultOffset,
+                OnlyDevRooms = onlyDevRooms
+            };
+            ListRoomsOutput listRoomsOutput = _channel.Request<ListRoomsArgs, ListRoomsOutput, PlayerIOError>(30, listRoomsArg);
+            return listRoomsOutput.RoomInfo;
+        }
     }
 }

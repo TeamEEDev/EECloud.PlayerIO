@@ -7,7 +7,7 @@ namespace EECloud.PlayerIO.Messages
     public class ListRoomsOutput
     {
         [ProtoMember(1)]
-        public List<RoomInfo> RoomInfo
+        public RoomInfo[] RoomInfo
         {
             get;
             set;

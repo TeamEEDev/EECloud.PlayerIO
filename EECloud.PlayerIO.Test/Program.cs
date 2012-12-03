@@ -14,7 +14,7 @@ namespace EECloud.PlayerIO.Test
             Console.Write("Connecting...");
             Watch.Start();
 
-            var client = PlayerIO.QuickConnect.SimpleConnect("mn1-dcmasqopteseuzd4ict5w", "guest", "guest");
+            var client = PlayerIO.QuickConnect.SimpleConnect("everybody-edits-su9rn58o40itdbnw69plyw", "guest", "guest");
             Watch.Stop();
 
             Console.WriteLine(" Done!");

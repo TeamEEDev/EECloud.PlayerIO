@@ -90,7 +90,7 @@ namespace EECloud.PlayerIO
                 OnlyDevRooms = onlyDevRooms
             };
             ListRoomsOutput listRoomsOutput = _channel.Request<ListRoomsArgs, ListRoomsOutput, PlayerIOError>(30, listRoomsArg);
-            return listRoomsOutput.RoomInfo;
+            return listRoomsOutput.RoomInfo.ToArray();
         }
     }
 }

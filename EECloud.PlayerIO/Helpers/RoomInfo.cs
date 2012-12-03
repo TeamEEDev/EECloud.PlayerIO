@@ -37,6 +37,8 @@ namespace EECloud.PlayerIO
             private set;
         }
 
+        internal RoomInfo() {}
+
         internal RoomInfo(string id, string roomType, int onlineUsers, Dictionary<string, string> roomData)
         {
             Id = id;

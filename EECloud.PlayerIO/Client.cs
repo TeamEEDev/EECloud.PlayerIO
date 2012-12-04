@@ -10,7 +10,7 @@ namespace EECloud.PlayerIO
     {
         private readonly HttpChannel _channel;
 
-        public readonly BigDB BigDB;
+        public BigDB BigDB { get; private set; }
 
         /// <summary>
         /// If not null, rooms will be created on the development server at the address defined by the server endpoint, instead of using the live Player.IO servers.

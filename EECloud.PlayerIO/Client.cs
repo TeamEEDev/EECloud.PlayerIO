@@ -10,6 +10,8 @@ namespace EECloud.PlayerIO
     {
         private readonly HttpChannel _channel;
 
+        public BigDB BigDB { get; private set; }
+
         /// <summary>
         /// If not null, rooms will be created on the development server at the address defined by the server endpoint, instead of using the live Player.IO servers.
         /// </summary>
@@ -31,6 +33,7 @@ namespace EECloud.PlayerIO
         {
             channel.SetToken(token);
             _channel = channel;
+            BigDB = new BigDB(channel);
             _token = token;
             _connectUserId = connectUserId;
         }
@@ -43,8 +46,7 @@ namespace EECloud.PlayerIO
         /// <param name="visible">If the room doesn't exists: Determines (upon creation) if the room should be visible when listing rooms with GetRooms.</param>
         /// <param name="roomData">If the room doesn't exists: The data to initialize the room with (upon creation).</param>
         /// <param name="joinData">Data to send to the room with additional information about the join.</param>
-        /// <returns>A new instance of Connection if connecting to the room was successful.</returns>
-        public Connection CreateJoinRoom(string roomId, string serverType, bool visible, Dictionary<string, string> roomData, Dictionary<string, string> joinData)
+        public Connection CreateJoinRoom(string roomId, string serverType, bool visible = true, Dictionary<string, string> roomData = null, Dictionary<string, string> joinData = null)
         {
             var createJoinRoomArg = new CreateJoinRoomArgs
                                         {
@@ -65,8 +67,7 @@ namespace EECloud.PlayerIO
         /// </summary>
         /// <param name="roomId">The ID of the room you wish to join.</param>
         /// <param name="joinData">Data to send to the room with additional information about the join.</param>
-        /// <returns>A new instance of Connection if joining the room was successful.</returns>
-        public Connection JoinRoom(string roomId, Dictionary<string, string> joinData)
+        public Connection JoinRoom(string roomId, Dictionary<string, string> joinData = null)
         {
             var joinRoomArg = new JoinRoomArgs
             {
@@ -79,7 +80,15 @@ namespace EECloud.PlayerIO
             return new Connection(serverEndpoint, joinRoomOutput.JoinKey);
         }
 
-        public RoomInfo[] ListRooms(string roomType, Dictionary<string, string> searchCriteria, int resultLimit, int resultOffset, bool onlyDevRooms = false)
+        /// <summary>
+        /// Lists the currently running multiplayer rooms.
+        /// </summary>
+        /// <param name="roomType">The type of the rooms you wish to list.</param>
+        /// <param name="searchCriteria">Only rooms with the same values in their roomData will be returned.</param>
+        /// <param name="resultLimit">The maximum amount of rooms you want to receive. Use 0 for 'as many as possible'.</param>
+        /// <param name="resultOffset">Defines the index to show results from.</param>
+        /// <param name="onlyDevRooms">Set to 'true' to list rooms from the development room list, rather than from the game's global room list.</param>
+        public RoomInfo[] ListRooms(string roomType, Dictionary<string, string> searchCriteria = null, int resultLimit = 0, int resultOffset = 0, bool onlyDevRooms = false)
         {
             var listRoomsArg = new ListRoomsArgs
             {
@@ -90,7 +99,7 @@ namespace EECloud.PlayerIO
                 OnlyDevRooms = onlyDevRooms
             };
             ListRoomsOutput listRoomsOutput = _channel.Request<ListRoomsArgs, ListRoomsOutput, PlayerIOError>(30, listRoomsArg);
-            return listRoomsOutput.RoomInfo;
+            return listRoomsOutput.RoomInfo ?? new RoomInfo[0];
         }
     }
 }

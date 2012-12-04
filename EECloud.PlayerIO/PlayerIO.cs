@@ -27,7 +27,6 @@ namespace EECloud.PlayerIO
         /// <param name="userId">The ID of the user you wish to authenticate.</param>
         /// <param name="auth">If the connection identified by ConnectionIdentifier only accepts authenticated requests: The auth value generated based on 'userId'.
         /// You can generate an auth value using the CalcAuth() method.</param>
-        /// <returns>A new instance of Client if logging in was successful.</returns>
         public static Client Connect(string gameId, string connectionId, string userId, string auth)
         {
             var connectArg = new ConnectArgs
@@ -46,7 +45,6 @@ namespace EECloud.PlayerIO
         /// </summary>
         /// <param name="userId">The UserID to use when generating the hash</param>
         /// <param name="sharedSecret">The shared secret to use when generating the hash. This must be the same value as the one given to a connection in the admin panel.</param>
-        /// <returns>The generated auth hash</returns>
         public static string CalcAuth(string userId, string sharedSecret)
         {
             var unixTime = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;

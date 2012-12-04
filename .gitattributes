@@ -1,10 +1,7 @@
 # Automatically detect text files and perform LF normalization
 * text=auto
 
-# Visual Studio
+# C#
 *.cs     diff=csharp
-*.sln    merge=union
 *.csproj merge=union
-*.vbproj merge=union
-*.fsproj merge=union
-*.dbproj merge=union
+*.sln    merge=union

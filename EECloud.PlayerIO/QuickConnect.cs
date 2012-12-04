@@ -1,7 +1,4 @@
-﻿using System;
-using System.Security.Cryptography;
-using System.Text;
-using EECloud.PlayerIO.Messages;
+﻿using EECloud.PlayerIO.Messages;
 
 namespace EECloud.PlayerIO
 {

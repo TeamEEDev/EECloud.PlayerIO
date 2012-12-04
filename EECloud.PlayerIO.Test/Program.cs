@@ -15,6 +15,7 @@ namespace EECloud.PlayerIO.Test
             Watch.Start();
 
             var client = PlayerIO.QuickConnect.SimpleConnect("everybody-edits-su9rn58o40itdbnw69plyw", "guest", "guest");
+            var test = client.ListRooms("Everybodyedits142", null, 0, 0);
             Watch.Stop();
 
             Console.WriteLine(" Done!");

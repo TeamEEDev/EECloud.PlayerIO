@@ -44,7 +44,7 @@ namespace EECloud.PlayerIO
         /// <param name="roomData">If the room doesn't exists: The data to initialize the room with (upon creation).</param>
         /// <param name="joinData">Data to send to the room with additional information about the join.</param>
         /// <returns>A new instance of Connection if connecting to the room was successful.</returns>
-        public Connection CreateJoinRoom(string roomId, string serverType, bool visible, Dictionary<string, string> roomData, Dictionary<string, string> joinData)
+        public Connection CreateJoinRoom(string roomId, string serverType, bool visible = true, Dictionary<string, string> roomData = null, Dictionary<string, string> joinData = null)
         {
             var createJoinRoomArg = new CreateJoinRoomArgs
                                         {
@@ -66,7 +66,7 @@ namespace EECloud.PlayerIO
         /// <param name="roomId">The ID of the room you wish to join.</param>
         /// <param name="joinData">Data to send to the room with additional information about the join.</param>
         /// <returns>A new instance of Connection if joining the room was successful.</returns>
-        public Connection JoinRoom(string roomId, Dictionary<string, string> joinData)
+        public Connection JoinRoom(string roomId, Dictionary<string, string> joinData = null)
         {
             var joinRoomArg = new JoinRoomArgs
             {
@@ -79,7 +79,7 @@ namespace EECloud.PlayerIO
             return new Connection(serverEndpoint, joinRoomOutput.JoinKey);
         }
 
-        public RoomInfo[] ListRooms(string roomType, Dictionary<string, string> searchCriteria, int resultLimit, int resultOffset, bool onlyDevRooms = false)
+        public RoomInfo[] ListRooms(string roomType, Dictionary<string, string> searchCriteria = null, int resultLimit = 0, int resultOffset = 0, bool onlyDevRooms = false)
         {
             var listRoomsArg = new ListRoomsArgs
             {

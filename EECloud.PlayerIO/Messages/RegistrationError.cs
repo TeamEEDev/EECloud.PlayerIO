@@ -4,7 +4,6 @@ using ProtoBuf;
 namespace EECloud.PlayerIO.Messages
 {
     [ProtoContract]
-    [Serializable]
     public class RegistrationError
     {
         [ProtoMember(1)]

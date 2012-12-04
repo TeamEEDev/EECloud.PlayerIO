@@ -1,7 +1,4 @@
-﻿using System;
-using System.Security.Cryptography;
-using System.Text;
-using EECloud.PlayerIO.Messages;
+﻿using EECloud.PlayerIO.Messages;
 
 namespace EECloud.PlayerIO
 {
@@ -20,7 +17,6 @@ namespace EECloud.PlayerIO
         /// </summary>
         /// <param name="gameId">The ID of the game you wish to connect to. This value can be found in the admin panel.</param>
         /// <param name="accessToken">The Facebook access token of the user you wish to authenticate.</param>
-        /// <returns>A new instance of Client if logging in was successful.</returns>
         public Client FacebookOAuthConnect(string gameId, string accessToken)
         {
             var facebookConnectArg = new FacebookOAuthConnectArgs { GameId = gameId, AccessToken = accessToken };
@@ -36,7 +32,6 @@ namespace EECloud.PlayerIO
         /// <param name="gameId">The ID of the game you wish to connect to. This value can be found in the admin panel.</param>
         /// <param name="usernameOrEmail">The username or e-mail address of the user you wish to authenticate.</param>
         /// <param name="password">The password of the user you wish to authenticate.</param>
-        /// <returns>A new instance of Client if logging in was successful.</returns>
         public Client SimpleConnect(string gameId, string usernameOrEmail, string password)
         {
             var simpleConnectArg = new SimpleConnectArgs
@@ -57,7 +52,6 @@ namespace EECloud.PlayerIO
         /// <param name="gameId">The ID of the game you wish to connect to. This value can be found in the admin panel.</param>
         /// <param name="userId">The Kongregate user ID of the user you wish to authenticate.</param>
         /// <param name="gameAuthToken">The Kongregate auth token of the game you wish to connect to (depends on the user you wish to authenticate).</param>
-        /// <returns>A new instance of Client if logging in was successful.</returns>
         public Client KongregateConnect(string gameId, string userId, string gameAuthToken)
         {
             var kongregateConnectArg = new KongregateConnectArgs

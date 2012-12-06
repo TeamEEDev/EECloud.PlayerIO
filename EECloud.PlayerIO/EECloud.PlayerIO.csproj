@@ -75,6 +75,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="BigDB.cs" />
+    <Compile Include="Enums\DbObjType.cs" />
     <Compile Include="Enums\MessageType.cs" />
     <Compile Include="Error\ErrorCode.cs" />
     <Compile Include="Helpers\Converter.cs" />

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using ProtoBuf;
 
 namespace EECloud.PlayerIO.Helpers
@@ -31,6 +32,12 @@ namespace EECloud.PlayerIO.Helpers
         {
             get;
             set;
+        }
+
+        public object Item(string propertyExpression)
+        {
+            object output = (from kvp in Core where kvp.Key == propertyExpression select kvp.Value).FirstOrDefault();
+            return output;
         }
 
         //[ProtoMember(4)]

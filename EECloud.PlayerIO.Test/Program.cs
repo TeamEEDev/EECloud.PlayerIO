@@ -14,7 +14,9 @@ namespace EECloud.PlayerIO.Test
             Console.Write("Connecting...");
             Watch.Start();
 
-            var client = PlayerIO.QuickConnect.SimpleConnect("everybody-edits-su9rn58o40itdbnw69plyw", "guest", "guest");
+            var client = PlayerIO.Connect("test-szf4hpjepkayftx3jm5wxa", "public", "testuser", null);
+            var test = client.BigDB.LoadMyPlayerObject();
+            var test2 = test.Item("3");
             Watch.Stop();
 
             Console.WriteLine(" Done!");

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using ProtoBuf;
 
@@ -52,6 +53,7 @@ namespace EECloud.PlayerIO.Helpers
                         switch ((byte)output[1])
                         {
                             case 1: // Integer
+                                return Decoder.ReadInteger(output.Substring(2));
                                 break;
                             case 2: // UInteger
                                 break;
@@ -61,7 +63,7 @@ namespace EECloud.PlayerIO.Helpers
                             case 4: // Boolean
                                 break;
                             case 5: // Float
-                                break;
+                                return Decoder.ReadFloat(output.Substring(2));
                             case 6: // Double
                                 break;
                             case 7: // ByteArray
@@ -76,6 +78,30 @@ namespace EECloud.PlayerIO.Helpers
             }
 
             return output;
+        }
+
+        private static class Decoder
+        {
+            public static int ReadInteger(string input)
+            {
+                return ProtoReader.DirectReadVarintInt32(GenerateStreamFromString(input));
+            }
+
+            public static float ReadFloat(string input)
+            {
+                var littleEndianInt32 = ProtoReader.DirectReadLittleEndianInt32(GenerateStreamFromString(input));
+                return BitConverter.ToSingle(BitConverter.GetBytes(littleEndianInt32), 0);
+            }
+        }
+
+        public static Stream GenerateStreamFromString(string input)
+        {
+            var stream = new MemoryStream();
+            var writer = new StreamWriter(stream);
+            writer.Write(input);
+            writer.Flush();
+            stream.Position = 0;
+            return stream;
         }
 
         //[ProtoMember(4)]

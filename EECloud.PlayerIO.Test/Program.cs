@@ -16,7 +16,7 @@ namespace EECloud.PlayerIO.Test
 
             var client = PlayerIO.Connect("test-szf4hpjepkayftx3jm5wxa", "public", "testuser", null);
             var test = client.BigDB.LoadMyPlayerObject();
-            var test2 = test.Item("09_DateTime");
+            var test2 = test.Item("11_Object");
             Watch.Stop();
 
             Console.WriteLine(" Done!");

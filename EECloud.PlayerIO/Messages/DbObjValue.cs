@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using ProtoBuf;
 
 namespace EECloud.PlayerIO.Messages
@@ -28,9 +29,9 @@ namespace EECloud.PlayerIO.Messages
                 case DbObjType.DateTime:
                     return UnixTimestampToDateTime(ValueDateTime);
                 case DbObjType.Array:
-                    return ValueArray;
+                    return ValueArray.Select(t => t.GetRealValue()).ToList();
                 case DbObjType.Obj:
-                    return ValueObject;
+                    return ValueObject.GetRealValue();
             }
 
             return null;

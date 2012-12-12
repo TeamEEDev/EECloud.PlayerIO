@@ -41,7 +41,7 @@ namespace EECloud.PlayerIO.Helpers
         {
             var output = (from kvp in Core where kvp.Key == propertyExpression select kvp.Value).FirstOrDefault();
 
-            return output.GetRealValue();
+            return output != null ? output.GetRealValue() : null;
         }
 
         //[ProtoMember(4)]

@@ -26,7 +26,7 @@ namespace EECloud.PlayerIO.Messages
                 case DbObjType.ByteArray:
                     return ValueByteArray;
                 case DbObjType.DateTime:
-                    return DateTime.FromFileTimeUtc(ValueDateTime);
+                    return UnixTimestampToDateTime(ValueDateTime);
                 case DbObjType.Array:
                     return ValueArray;
                 case DbObjType.Obj:
@@ -105,6 +105,14 @@ namespace EECloud.PlayerIO.Messages
             get;
             set;
         }
+        public static DateTime UnixTimestampToDateTime(long unixTimeStamp)
+        {
+            return new DateTime(1970, 1, 1).AddMilliseconds(unixTimeStamp);
+        }
+        //public static long DateTimeToUnixTimestamp(DateTime dateTime)
+        //{
+        //    return (long)(dateTime - new DateTime(1970, 1, 1)).TotalMilliseconds;
+        //}
 
         [ProtoMember(11)]
         public List<DbObjValue> ValueArray

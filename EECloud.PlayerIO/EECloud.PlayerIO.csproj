@@ -75,6 +75,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="BigDB.cs" />
+    <Compile Include="Enums\DbObjType.cs" />
     <Compile Include="Enums\MessageType.cs" />
     <Compile Include="Error\ErrorCode.cs" />
     <Compile Include="Helpers\Converter.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Helpers\Message.cs" />
     <Compile Include="Enums\ProtocolType.cs" />
     <Compile Include="Messages\ConnectArgs.cs" />
+    <Compile Include="Messages\DbObjValue.cs" />
     <Compile Include="Messages\LoadMyPlayerObjectOutput.cs" />
     <Compile Include="Messages\LoadMyPlayerObjectArgs.cs" />
     <Compile Include="Messages\ListRoomsArgs.cs" />

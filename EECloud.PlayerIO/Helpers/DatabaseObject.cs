@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using EECloud.PlayerIO.Messages;
 using ProtoBuf;
 
 namespace EECloud.PlayerIO.Helpers
@@ -27,10 +29,17 @@ namespace EECloud.PlayerIO.Helpers
         }
 
         [ProtoMember(3)]
-        public KeyValuePair<string, string>[] Core
+        private KeyValuePair<string, DbObjValue>[] Core
         {
             get;
             set;
+        }
+
+        public object Item(string propertyExpression)
+        {
+            var output = (from kvp in Core where kvp.Key == propertyExpression select kvp.Value).FirstOrDefault();
+
+            return output != null ? output.GetRealValue() : null;
         }
 
         //[ProtoMember(4)]

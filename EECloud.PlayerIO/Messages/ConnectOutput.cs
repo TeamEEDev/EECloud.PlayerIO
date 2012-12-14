@@ -6,31 +6,15 @@ namespace EECloud.PlayerIO.Messages
 	internal class ConnectOutput
 	{
         [ProtoMember(1)]
-        public string Token
-        {
-            get;
-            set;
-        }
+        public string Token { get; set; }
 
         [ProtoMember(2)]
-        public string UserId
-        {
-            get;
-            set;
-        }
+        public string UserId { get; set; }
 
         [ProtoMember(3)]
-        public bool ShowBranding
-		{
-			get;
-			set;
-		}
+        public bool ShowBranding { get; set; }
 
         [ProtoMember(4)]
-		public string GameFSRedirectMap
-		{
-			get;
-			set;
-		}
+        public string GameFSRedirectMap { get; set; }
 	}
 }

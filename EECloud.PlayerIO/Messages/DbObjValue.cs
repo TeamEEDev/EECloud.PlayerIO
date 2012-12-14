@@ -38,95 +38,49 @@ namespace EECloud.PlayerIO.Messages
         }
 
         [ProtoMember(1)]
-        public DbObjType Type
-        {
-            get;
-            set;
-        }
+        public DbObjType Type { get; set; }
 
         [ProtoMember(2)]
-        public string ValueString
-        {
-            get;
-            set;
-        }
+        public string ValueString { get; set; }
 
         [ProtoMember(3)]
-        public int ValueInteger
-        {
-            get;
-            set;
-        }
+        public int ValueInteger { get; set; }
         
         [ProtoMember(4)]
-        public uint ValueUInteger
-        {
-            get;
-            set;
-        }
+        public uint ValueUInteger { get; set; }
 
         [ProtoMember(5)]
-        public long ValueLong
-        {
-            get;
-            set;
-        }
+        public long ValueLong { get; set; }
 
         [ProtoMember(6)]
-        public bool ValueBoolean
-        {
-            get;
-            set;
-        }
+        public bool ValueBoolean { get; set; }
 
         [ProtoMember(7)]
-        public float ValueFloat
-        {
-            get;
-            set;
-        }
+        public float ValueFloat { get; set; }
 
         [ProtoMember(8)]
-        public double ValueDouble
-        {
-            get;
-            set;
-        }
+        public double ValueDouble { get; set; }
 
         [ProtoMember(9)]
-        public byte[] ValueByteArray
-        {
-            get;
-            set;
-        }
+        public byte[] ValueByteArray { get; set; }
 
         [ProtoMember(10)]
-        public long ValueDateTime
-        {
-            get;
-            set;
-        }
+        public long ValueDateTime { get; set; }
+
+        [ProtoMember(11)]
+        public List<DbObjValue> ValueArray { get; set; }
+
+        [ProtoMember(12)]
+        public DbObjValue ValueObject { get; set; }
+
         public static DateTime UnixTimestampToDateTime(long unixTimeStamp)
         {
             return new DateTime(1970, 1, 1).AddMilliseconds(unixTimeStamp);
         }
+
         //public static long DateTimeToUnixTimestamp(DateTime dateTime)
         //{
         //    return (long)(dateTime - new DateTime(1970, 1, 1)).TotalMilliseconds;
         //}
-
-        [ProtoMember(11)]
-        public List<DbObjValue> ValueArray
-        {
-            get;
-            set;
-        }
-
-        [ProtoMember(12)]
-        public DbObjValue ValueObject
-        {
-            get;
-            set;
-        }
     }
 }

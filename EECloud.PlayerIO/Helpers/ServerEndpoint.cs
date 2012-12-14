@@ -8,20 +8,12 @@
         /// <summary>
         /// The address or hostname of the server.
         /// </summary>
-        public string Address
-        {
-            get;
-            private set;
-        }
+        public string Address { get; private set; }
 
         /// <summary>
         /// The port of the server.
         /// </summary>
-        public int Port
-        {
-            get;
-            private set;
-        }
+        public int Port { get; private set; }
 
         public ServerEndpoint(string address, int port)
         {

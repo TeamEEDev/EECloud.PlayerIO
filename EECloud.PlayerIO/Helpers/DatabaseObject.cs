@@ -8,32 +8,16 @@ namespace EECloud.PlayerIO.Helpers
     [ProtoContract]
     public class DatabaseObject
     {
-        public string Table
-        {
-            get;
-            set;
-        }
+        public string Table { get; internal set; }
 
         [ProtoMember(1)]
-        public string Key
-        {
-            get;
-            set;
-        }
+        public string Key { get; set; }
 
         [ProtoMember(2)]
-        public string Version
-        {
-            get;
-            set;
-        }
+        public string Version { get; set; }
 
         [ProtoMember(3)]
-        private KeyValuePair<string, DbObjValue>[] Core
-        {
-            get;
-            set;
-        }
+        private KeyValuePair<string, DbObjValue>[] Core { get; set; }
 
         public object Item(string propertyExpression)
         {
@@ -43,10 +27,6 @@ namespace EECloud.PlayerIO.Helpers
         }
 
         //[ProtoMember(4)]
-        //public uint identifier310
-        //{
-        //    get;
-        //    set;
-        //}
+        //public uint identifier310 { get; set; }
     }
 }

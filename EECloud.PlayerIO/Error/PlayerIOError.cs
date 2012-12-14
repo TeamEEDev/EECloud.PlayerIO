@@ -7,11 +7,7 @@ namespace EECloud.PlayerIO
     /// </summary>
     public class PlayerIOError : ApplicationException
     {
-        public ErrorCode ErrorCode
-        {
-            get;
-            private set;
-        }
+        public ErrorCode ErrorCode { get; private set; }
 
         /// <summary>
         /// Creates a new instance of PlayerIOError.

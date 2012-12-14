@@ -86,7 +86,7 @@
     <Compile Include="Messages\ConnectArgs.cs" />
     <Compile Include="Messages\DbObjValue.cs" />
     <Compile Include="Messages\LoadMyPlayerObjectOutput.cs" />
-    <Compile Include="Messages\LoadMyPlayerObjectArgs.cs" />
+    <Compile Include="Messages\NoArgs.cs" />
     <Compile Include="Messages\ListRoomsArgs.cs" />
     <Compile Include="Messages\ListRoomsOutput.cs" />
     <Compile Include="Messages\JoinRoomArgs.cs" />

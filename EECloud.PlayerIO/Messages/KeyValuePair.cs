@@ -6,17 +6,9 @@ namespace EECloud.PlayerIO.Messages
     public class KeyValuePair
     {
         [ProtoMember(1)]
-        public string Key
-        {
-            get;
-            set;
-        }
+        public string Key { get; set; }
 
         [ProtoMember(2)]
-        public string Value
-        {
-            get;
-            set;
-        }
+        public string Value { get; set; }
     }
 }

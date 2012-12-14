@@ -21,8 +21,6 @@ namespace EECloud.PlayerIO
         [ProtoMember(4)]
         public Dictionary<string, string> RoomData { get; private set; }
 
-        internal RoomInfo() {}
-
         internal RoomInfo(string id, string roomType, int onlineUsers, Dictionary<string, string> roomData)
         {
             Id = id;

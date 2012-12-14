@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,11 +9,8 @@ namespace EECloud.PlayerIO
     /// Represents a message sent between the client and the server.
     /// <para>A message consists of a type (string), and zero or more parameters that are supported.</para>
     /// </summary>
-    public class Message
+    public class Message : IEnumerable<object>
     {
-        public string Type { get; private set; }
-        private readonly List<Tuple<object, MessageType>> _parameters = new List<Tuple<object, MessageType>>();
-
         /// <summary>Creates a new Message.</summary>
         /// <param name="type">The type of message to create.</param>
         /// <param name="parameters">A list of the data to add to the message.</param>
@@ -22,10 +20,8 @@ namespace EECloud.PlayerIO
             Add(parameters);
         }
 
-        public object Item(int index)
-        {
-            return _parameters[index].Item1;
-        }
+        public string Type { get; private set; }
+        private readonly List<Tuple<object, MessageType>> _parameters = new List<Tuple<object, MessageType>>();
 
         public int Count
         {
@@ -33,6 +29,11 @@ namespace EECloud.PlayerIO
         }
 
         #region Get
+        public object Item(int index)
+        {
+            return _parameters[index].Item1;
+        }
+
         public string GetString(int index)
         {
             return (string)_parameters[index].Item1;
@@ -184,7 +185,7 @@ namespace EECloud.PlayerIO
         {
             string output = "Message.Type = " + Type + Environment.NewLine +
                 "Message.Parameters";
-            for (int i = 0; i < _parameters.Count; i++)
+            for (var i = 0; i < _parameters.Count; i++)
             {
                 output += Environment.NewLine +
                     "  [" + i + "] (" + _parameters[i].Item1.GetType().Name + ") = " +
@@ -198,7 +199,7 @@ namespace EECloud.PlayerIO
             return _parameters.Select(t => t.Item1).GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }

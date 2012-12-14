@@ -2,6 +2,6 @@
 * text=auto
 
 # C#
-*.cs     diff=csharp
-*.csproj merge=union
-*.sln    merge=union
+*.cs     diff=csharp eol=crlf
+*.csproj merge=union eol=crlf
+*.sln    merge=union eol=crlf

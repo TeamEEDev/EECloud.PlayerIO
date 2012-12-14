@@ -6,17 +6,9 @@ namespace EECloud.PlayerIO.Messages
     public class ServerEndpoint
     {
         [ProtoMember(1)]
-        public string Address
-        {
-            get;
-            set;
-        }
+        public string Address { get; set; }
 
         [ProtoMember(2)]
-        public int Port
-        {
-            get;
-            set;
-        }
+        public int Port { get; set; }
     }
 }

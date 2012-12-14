@@ -7,10 +7,6 @@ namespace EECloud.PlayerIO.Messages
     public class LoadMyPlayerObjectOutput
     {
         [ProtoMember(1)]
-        public DatabaseObject PlayerObject
-        {
-            get;
-            set;
-        }
+        public DatabaseObject PlayerObject { get; set; }
     }
 }

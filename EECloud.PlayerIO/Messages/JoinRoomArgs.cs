@@ -6,24 +6,12 @@ namespace EECloud.PlayerIO.Messages
     public class JoinRoomArgs
     {
         [ProtoMember(1)]
-        public string RoomId
-        {
-            get;
-            set;
-        }
+        public string RoomId { get; set; }
 
         [ProtoMember(2)]
-        public KeyValuePair[] JoinData
-        {
-            get;
-            set;
-        }
+        public KeyValuePair[] JoinData { get; set; }
 
         [ProtoMember(3)]
-        public bool IsDevRoom
-        {
-            get;
-            set;
-        }
+        public bool IsDevRoom { get; set; }
     }
 }

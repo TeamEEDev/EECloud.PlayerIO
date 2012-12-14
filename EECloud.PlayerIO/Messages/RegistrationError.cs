@@ -7,22 +7,22 @@ namespace EECloud.PlayerIO.Messages
     public class RegistrationError
     {
         [ProtoMember(1)]
-        public ErrorCode ErrorCode;
+        public ErrorCode ErrorCode { get; set; }
 
         [ProtoMember(2)]
-        public string Message;
+        public string Message { get; set; }
 
         [ProtoMember(3)]
-        public string UsernameError;
+        public string UsernameError { get; set; }
 
         [ProtoMember(4)]
-        public string PasswordError;
+        public string PasswordError { get; set; }
 
         [ProtoMember(5)]
-        public string EmailError;
+        public string EmailError { get; set; }
 
         [ProtoMember(6)]
-        public string CaptchaError;
+        public string CaptchaError { get; set; }
 
         public RegistrationError()
         {

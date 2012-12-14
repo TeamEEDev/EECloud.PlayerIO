@@ -11,7 +11,6 @@ namespace EECloud.PlayerIO
             _channel = channel;
         }
 
-
         /// <summary>
         /// Connects to a game based on Player.IO as a Facebook user using a Facebook access token.
         /// </summary>

@@ -21,7 +21,7 @@ namespace EECloud.PlayerIO.Test
 
             Console.WriteLine(" Done!");
             Console.WriteLine("Token: " + client.Token + Environment.NewLine +
-                              "Time elapsed: " + Watch.ElapsedMilliseconds);
+                              "Time elapsed: " + Watch.ElapsedMilliseconds + "ms");
             Console.CursorVisible = true;
 
             Console.ReadKey(true);

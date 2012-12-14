@@ -1,5 +1,4 @@
-﻿using System;
-using ProtoBuf;
+﻿using ProtoBuf;
 
 namespace EECloud.PlayerIO.Messages
 {
@@ -7,10 +6,10 @@ namespace EECloud.PlayerIO.Messages
     public class Error
     {
         [ProtoMember(1)]
-        public ErrorCode ErrorCode;
+        public ErrorCode ErrorCode { get; set; }
 
         [ProtoMember(2)]
-        public string Message;
+        public string Message { get; set; }
 
         public Error()
         {

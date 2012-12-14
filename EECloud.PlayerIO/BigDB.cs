@@ -16,7 +16,7 @@ namespace EECloud.PlayerIO
 
         public DatabaseObject LoadMyPlayerObject()
         {
-            var loadMyPlayerObjectOutput = _channel.Request<LoadMyPlayerObjectArgs, LoadMyPlayerObjectOutput, PlayerIOError>(103, new LoadMyPlayerObjectArgs());
+            var loadMyPlayerObjectOutput = _channel.Request<NoArgs, LoadMyPlayerObjectOutput, PlayerIOError>(103, new NoArgs());
             loadMyPlayerObjectOutput.PlayerObject.Table = PlayerObjectsTableName;
             return loadMyPlayerObjectOutput.PlayerObject;
         }

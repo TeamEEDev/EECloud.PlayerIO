@@ -8,7 +8,7 @@ namespace EECloud.PlayerIO
     /// Represents a message sent between the client and the server.
     /// <para>A message consists of a type (string), and zero or more parameters that are supported.</para>
     /// </summary>
-    public class Message : IEnumerable<object>
+    public class Message
     {
         public string Type { get; private set; }
         private readonly List<Tuple<object, MessageType>> _parameters = new List<Tuple<object, MessageType>>();
@@ -22,9 +22,9 @@ namespace EECloud.PlayerIO
             Add(parameters);
         }
 
-        public object this[int index]
+        public object Item(int index)
         {
-            get { return _parameters[index].Item1; }
+            return _parameters[index].Item1;
         }
 
         public int Count

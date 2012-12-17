@@ -86,6 +86,7 @@
     <Compile Include="Messages\Client\ConnectArgs.cs" />
     <Compile Include="Messages\BigDB\DbObjValue.cs" />
     <Compile Include="Messages\BigDB\LoadMyPlayerObjectOutput.cs" />
+    <Compile Include="Messages\Client\SteamConnectArgs.cs" />
     <Compile Include="Messages\NoArgs.cs" />
     <Compile Include="Messages\Client\ListRoomsArgs.cs" />
     <Compile Include="Messages\Client\ListRoomsOutput.cs" />

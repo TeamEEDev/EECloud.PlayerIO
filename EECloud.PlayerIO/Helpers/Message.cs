@@ -138,7 +138,7 @@ namespace EECloud.PlayerIO
         {
             if (parameter == null)
             {
-                throw new ArgumentNullException(ParameterNullText);
+                throw new ArgumentNullException("parameter", ParameterNullText);
             }
             _parameters.Add(Tuple.Create((object)parameter, MessageType.String));
         }
@@ -162,7 +162,7 @@ namespace EECloud.PlayerIO
         {
             if (parameter == null)
             {
-                throw new ArgumentNullException(ParameterNullText);
+                throw new ArgumentNullException("parameter", ParameterNullText);
             }
             _parameters.Add(Tuple.Create((object)parameter, MessageType.ByteArray));
         }

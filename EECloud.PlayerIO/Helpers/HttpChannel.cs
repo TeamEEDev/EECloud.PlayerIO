@@ -43,9 +43,8 @@ namespace EECloud.PlayerIO
 				{
 					throw new PlayerIOError(ErrorCode.GeneralError, "Connection to the Player.IO WebService has just been unexpectedly terminated.");
 				}
-
-			    var stream = webException.Response.GetResponseStream();
-			    using (stream)
+			    
+			    using (var stream = webException.Response.GetResponseStream())
 			    {
 			        if (stream != null)
 			            using (var streamReader = new StreamReader(stream))

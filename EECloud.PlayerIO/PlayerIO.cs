@@ -47,8 +47,11 @@ namespace EECloud.PlayerIO
         public static string CalcAuth(string userId, string sharedSecret)
         {
             var unixTime = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
-            var hmac = new HMACSHA1(Encoding.UTF8.GetBytes(sharedSecret)).ComputeHash(Encoding.UTF8.GetBytes(unixTime + ":" + userId));
-            return unixTime + ":" + BitConverter.ToString(hmac).Replace("-", "").ToLowerInvariant();
+            using (var hmacInstance = new HMACSHA1(Encoding.UTF8.GetBytes(sharedSecret)))
+            {
+                var hmacHash = hmacInstance.ComputeHash(Encoding.UTF8.GetBytes(unixTime + ":" + userId));
+                return unixTime + ":" + BitConverter.ToString(hmacHash).Replace("-", "").ToLowerInvariant();
+            }
         }
     }
 }

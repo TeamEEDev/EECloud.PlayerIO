@@ -8,7 +8,7 @@
     /// <summary>
     /// Used to add a disconnect handler to the OnDisconnect event of an instance of Connection.
     /// </summary>
-    /// <param name="message">The reason for disconnecting explained by words.</param>
+    /// <param name="message">The reason of disconnecting explained by words.</param>
     public delegate void DisconnectEventHandler(object sender, string message);
 
     /// <summary>

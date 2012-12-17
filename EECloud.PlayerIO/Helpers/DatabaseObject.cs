@@ -21,9 +21,13 @@ namespace EECloud.PlayerIO.Helpers
 
         public object Item(string propertyExpression)
         {
-            var output = (from kvp in Core where kvp.Key == propertyExpression select kvp.Value).FirstOrDefault();
+            if (Core != null)
+            {
+                var output = (from kvp in Core where kvp.Key == propertyExpression select kvp.Value).FirstOrDefault();
+                if (output != null) return output.GetRealValue();
+            }
 
-            return output != null ? output.GetRealValue() : null;
+            return null;
         }
 
         //[ProtoMember(4)]

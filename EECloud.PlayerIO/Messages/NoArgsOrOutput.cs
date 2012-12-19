@@ -3,7 +3,7 @@
 namespace EECloud.PlayerIO.Messages
 {
     [ProtoContract]
-    public class NoArgs
+    public class NoArgsOrOutput
     {
 
     }

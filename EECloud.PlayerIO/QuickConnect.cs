@@ -11,6 +11,7 @@ namespace EECloud.PlayerIO
             _channel = channel;
         }
 
+        #region Connect
         /// <summary>
         /// Connects to a game based on Player.IO as a simple user.
         /// </summary>
@@ -32,7 +33,7 @@ namespace EECloud.PlayerIO
         }
 
         /// <summary>
-        /// Connects to a game based on Player.IO as a Facebook user using a Facebook access token.
+        /// Connects to a game based on Player.IO as a Facebook user.
         /// </summary>
         /// <param name="gameId">The ID of the game you wish to connect to. This value can be found in the admin panel.</param>
         /// <param name="accessToken">The Facebook access token of the user you wish to authenticate.</param>
@@ -84,14 +85,15 @@ namespace EECloud.PlayerIO
                                                                                  steamConnectArgs);
             return new Client(_channel, steamConnectOutput.Token, steamConnectOutput.UserId);
         }
+        #endregion
 
-        public void SimpleRecoverPassword(string gameId, string usernameOrEmail)
-        {
-            this.Call<identifier39.identifier101, identifier39.identifier104, PlayerIOError>(406, new identifier39.identifier101
-            {
-                identifier102 = gameId,
-                identifier103 = usernameOrEmail
-            });
-        }
+        //public void SimpleRecoverPassword(string gameId, string usernameOrEmail)
+        //{
+        //    this.Call<identifier39.identifier101, identifier39.identifier104, PlayerIOError>(406, new identifier39.identifier101
+        //    {
+        //        identifier102 = gameId,
+        //        identifier103 = usernameOrEmail
+        //    });
+        //}
     }
 }

@@ -11,6 +11,7 @@ namespace EECloud.PlayerIO
             _channel = channel;
         }
 
+        #region Connect
         /// <summary>
         /// Connects to a game based on Player.IO as a simple user.
         /// </summary>
@@ -32,7 +33,7 @@ namespace EECloud.PlayerIO
         }
 
         /// <summary>
-        /// Connects to a game based on Player.IO as a Facebook user using a Facebook access token.
+        /// Connects to a game based on Player.IO as a Facebook user.
         /// </summary>
         /// <param name="gameId">The ID of the game you wish to connect to. This value can be found in the admin panel.</param>
         /// <param name="accessToken">The Facebook access token of the user you wish to authenticate.</param>
@@ -65,6 +66,12 @@ namespace EECloud.PlayerIO
             return new Client(_channel, kongregateConnectOutput.Token, kongregateConnectOutput.UserId);
         }
 
+        /// <summary>
+        /// Connects to a game based on Player.IO as a Steam user.
+        /// </summary>
+        /// <param name="gameId">The ID of the game you wish to connect to. This value can be found in the admin panel.</param>
+        /// <param name="steamAppId">The Steam application ID of the game you wish to connect to.</param>
+        /// <param name="steamSessionTicket">The Steam session ticket of the user you wish to authenticate.</param>
         public Client SteamConnect(string gameId, string steamAppId, string steamSessionTicket)
         {
             var steamConnectArgs = new SteamConnectArgs
@@ -77,6 +84,18 @@ namespace EECloud.PlayerIO
                 _channel.Request<SteamConnectArgs, ConnectOutput, PlayerIOError>(421,
                                                                                  steamConnectArgs);
             return new Client(_channel, steamConnectOutput.Token, steamConnectOutput.UserId);
+        }
+        #endregion
+
+        public void SimpleRecoverPassword(string gameId, string usernameOrEmail)
+        {
+            var simpleRecoverPasswordArgs = new SimpleRecoverPasswordArgs
+            {
+                GameId = gameId,
+                UsernameOrEmail = usernameOrEmail,
+            };
+            _channel.Request<SimpleRecoverPasswordArgs, NoArgsOrOutput, PlayerIOError>(406,
+                                                                                       simpleRecoverPasswordArgs);
         }
     }
 }

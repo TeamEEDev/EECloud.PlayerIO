@@ -87,13 +87,15 @@ namespace EECloud.PlayerIO
         }
         #endregion
 
-        //public void SimpleRecoverPassword(string gameId, string usernameOrEmail)
-        //{
-        //    this.Call<identifier39.identifier101, identifier39.identifier104, PlayerIOError>(406, new identifier39.identifier101
-        //    {
-        //        identifier102 = gameId,
-        //        identifier103 = usernameOrEmail
-        //    });
-        //}
+        public void SimpleRecoverPassword(string gameId, string usernameOrEmail)
+        {
+            var simpleRecoverPasswordArgs = new SimpleRecoverPasswordArgs
+            {
+                GameId = gameId,
+                UsernameOrEmail = usernameOrEmail,
+            };
+            _channel.Request<SimpleRecoverPasswordArgs, NoArgsOrOutput, PlayerIOError>(406,
+                                                                                       simpleRecoverPasswordArgs);
+        }
     }
 }

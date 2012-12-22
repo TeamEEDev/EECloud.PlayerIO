@@ -87,6 +87,11 @@ namespace EECloud.PlayerIO
         }
         #endregion
 
+        /// <summary>
+        /// Initiates the password recovery process for a user who has supplied an e-mail address during registration.
+        /// </summary>
+        /// <param name="gameId">The ID of the game the user is registered in.</param>
+        /// <param name="usernameOrEmail">The username or e-mail address of the user who wishes to recover his/her password.</param>
         public void SimpleRecoverPassword(string gameId, string usernameOrEmail)
         {
             var simpleRecoverPasswordArgs = new SimpleRecoverPasswordArgs

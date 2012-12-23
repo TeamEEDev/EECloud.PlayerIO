@@ -1,4 +1,5 @@
-﻿using EECloud.PlayerIO.Messages;
+﻿using System.Collections.Generic;
+using EECloud.PlayerIO.Messages;
 
 namespace EECloud.PlayerIO
 {
@@ -87,6 +88,40 @@ namespace EECloud.PlayerIO
         }
         #endregion
 
+        /// <summary>
+        /// Registers a new user in the simple user database.
+        /// </summary>
+        /// <param name="gameId">The ID of the game you wish to register and connect to. This value can be found in the admin panel.</param>
+        /// <param name="username">The desired username of the new user.</param>
+        /// <param name="password">The desired password of the new user.</param>
+        /// <param name="email">The e-mail address of the new user.</param>
+        /// <param name="captchaKey">Only if captcha is required: The key of the captcha image used to get the user to type in the captcha's value.</param>
+        /// <param name="captchaValue">Only if captcha is required: The string the user entered in response to the captcha image.</param>
+        /// <param name="extraData">Any extra data that you wish to store with the user, such as gender, birthdate, etc.</param>
+        /// <returns>The Client of the newly registered user.</returns>
+        public Client SimpleRegister(string gameId, string username, string password, string email = null, string captchaKey = null, string captchaValue = null, Dictionary<string, string> extraData = null)
+        {
+            var simpleRegisterArgs = new SimpleRegisterArgs
+            {
+                GameId = gameId,
+                Username = username,
+                Password = password,
+                Email = email,
+                CaptchaKey = captchaKey,
+                CaptchaValue = captchaValue,
+                ExtraData = Converter.Convert(extraData)
+            };
+            var simpleRegisterOutput = _channel.Request<SimpleRegisterArgs, ConnectOutput, PlayerIORegistrationError>(403,
+                                                                                                                      simpleRegisterArgs);
+
+            return new Client(_channel, simpleRegisterOutput.Token, simpleRegisterOutput.UserId);
+        }
+
+        /// <summary>
+        /// Initiates the password recovery process for a user who has supplied an e-mail address during registration.
+        /// </summary>
+        /// <param name="gameId">The ID of the game the user is registered in.</param>
+        /// <param name="usernameOrEmail">The username or e-mail address of the user who wishes to recover his/her password.</param>
         public void SimpleRecoverPassword(string gameId, string usernameOrEmail)
         {
             var simpleRecoverPasswordArgs = new SimpleRecoverPasswordArgs

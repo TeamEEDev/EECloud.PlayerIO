@@ -18,15 +18,15 @@ namespace EECloud.PlayerIO
 
         internal static Dictionary<string, string> Convert(KeyValuePair[] keyValuePair)
         {
-            var strs = new Dictionary<string, string>();
+            var dic = new Dictionary<string, string>();
             if (keyValuePair != null)
             {
                 foreach (var valuePair in keyValuePair)
                 {
-                    strs[valuePair.Key] = valuePair.Value;
+                    dic[valuePair.Key] = valuePair.Value;
                 }
             }
-            return strs;
+            return dic;
         }
 
         internal static ServerEndpoint Convert(Messages.ServerEndpoint serverEndpoint)

@@ -11,6 +11,7 @@
     <AssemblyName>EECloud.PlayerIO</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -83,6 +84,7 @@
     <Compile Include="Helpers\HttpChannel.cs" />
     <Compile Include="Helpers\Message.cs" />
     <Compile Include="Enums\ProtocolType.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="Messages\Client\ConnectArgs.cs" />
     <Compile Include="Messages\BigDB\DbObjValue.cs" />
     <Compile Include="Messages\BigDB\LoadMyPlayerObjectOutput.cs" />

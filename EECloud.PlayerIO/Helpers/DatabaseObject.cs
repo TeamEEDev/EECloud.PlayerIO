@@ -17,13 +17,13 @@ namespace EECloud.PlayerIO.Helpers
         public string Version { get; set; }
 
         [ProtoMember(3)]
-        private KeyValuePair<string, DbObjValue>[] Core { get; set; }
+        private KeyValuePair<string, DbObjValue>[] Properties { get; set; }
 
         public object Item(string propertyExpression)
         {
-            if (Core != null)
+            if (Properties != null)
             {
-                var output = (from kvp in Core where kvp.Key == propertyExpression select kvp.Value).FirstOrDefault();
+                var output = (from kvp in Properties where kvp.Key == propertyExpression select kvp.Value).FirstOrDefault();
                 if (output != null) return output.GetRealValue();
             }
 
@@ -31,6 +31,6 @@ namespace EECloud.PlayerIO.Helpers
         }
 
         //[ProtoMember(4)]
-        //public uint identifier310 { get; set; }
+        //public uint Creator { get; set; }
     }
 }

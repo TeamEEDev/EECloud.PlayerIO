@@ -50,7 +50,9 @@ namespace EECloud.PlayerIO
             using (var hmacInstance = new HMACSHA1(Encoding.UTF8.GetBytes(sharedSecret)))
             {
                 var hmacHash = hmacInstance.ComputeHash(Encoding.UTF8.GetBytes(unixTime + ":" + userId));
-                return unixTime + ":" + BitConverter.ToString(hmacHash).Replace("-", "").ToLowerInvariant();
+
+                var strBld = new StringBuilder(unixTime + ":" + BitConverter.ToString(hmacHash));
+                return strBld.Replace("-", "").ToString().ToLower(Config.InvariantCulture);
             }
         }
     }

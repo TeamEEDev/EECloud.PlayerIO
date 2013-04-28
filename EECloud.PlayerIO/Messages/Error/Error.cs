@@ -3,7 +3,7 @@
 namespace EECloud.PlayerIO.Messages
 {
     [ProtoContract]
-    public class Error
+    internal class Error
     {
         [ProtoMember(1)]
         public ErrorCode ErrorCode { get; set; }

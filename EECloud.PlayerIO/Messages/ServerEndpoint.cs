@@ -3,7 +3,7 @@
 namespace EECloud.PlayerIO.Messages
 {
     [ProtoContract]
-    public class ServerEndpoint
+    internal class ServerEndpoint
     {
         [ProtoMember(1)]
         public string Address { get; set; }

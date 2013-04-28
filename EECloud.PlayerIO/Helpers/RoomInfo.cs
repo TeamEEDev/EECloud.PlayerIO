@@ -26,7 +26,7 @@ namespace EECloud.PlayerIO
             Id = id;
             RoomType = roomType;
             OnlineUsers = onlineUsers;
-            RoomData = (roomData ?? new Dictionary<string, string>());
+            RoomData = roomData ?? new Dictionary<string, string>();
         }
     }
 }

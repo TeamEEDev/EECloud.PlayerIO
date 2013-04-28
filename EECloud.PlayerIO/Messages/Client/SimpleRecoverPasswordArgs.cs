@@ -3,7 +3,7 @@
 namespace EECloud.PlayerIO.Messages
 {
     [ProtoContract]
-    public class SimpleRecoverPasswordArgs
+    internal class SimpleRecoverPasswordArgs
     {
         [ProtoMember(1)]
         public string GameId { get; set; }

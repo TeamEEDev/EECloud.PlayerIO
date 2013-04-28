@@ -3,7 +3,7 @@
 namespace EECloud.PlayerIO.Messages
 {
     [ProtoContract]
-    public class KeyValuePair
+    internal class KeyValuePair
     {
         [ProtoMember(1)]
         public string Key { get; set; }

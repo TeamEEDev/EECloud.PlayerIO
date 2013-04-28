@@ -3,7 +3,7 @@
 namespace EECloud.PlayerIO.Messages
 {
     [ProtoContract]
-    public class FacebookOAuthConnectArgs
+    internal class FacebookOAuthConnectArgs
     {
         [ProtoMember(1)]
         public string GameId { get; set; }

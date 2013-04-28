@@ -3,7 +3,7 @@
 namespace EECloud.PlayerIO.Messages
 {
     [ProtoContract]
-    public class JoinRoomOutput
+    internal class JoinRoomOutput
     {
         [ProtoMember(1)]
         public string JoinKey { get; set; }

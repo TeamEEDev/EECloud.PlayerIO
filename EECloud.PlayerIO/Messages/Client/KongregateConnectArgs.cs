@@ -3,7 +3,7 @@
 namespace EECloud.PlayerIO.Messages
 {
     [ProtoContract]
-    public class KongregateConnectArgs
+    internal class KongregateConnectArgs
     {
         [ProtoMember(1)]
         public string GameId { get; set; }

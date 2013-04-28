@@ -3,7 +3,7 @@
 namespace EECloud.PlayerIO.Messages
 {
     [ProtoContract]
-    public class SteamConnectArgs
+    internal class SteamConnectArgs
     {
         [ProtoMember(1)]
         public string GameId { get; set; }

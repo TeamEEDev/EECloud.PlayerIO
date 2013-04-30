@@ -26,7 +26,7 @@ namespace EECloud.PlayerIO
         /// <param name="userId">The ID of the user you wish to authenticate.</param>
         /// <param name="auth">If the connection identified by ConnectionIdentifier only accepts authenticated requests: The auth value generated based on 'userId'.
         /// You can generate an auth value using the CalcAuth() method.</param>
-        public static Client Connect(string gameId, string connectionId, string userId, string auth)
+        public static Client Connect(string gameId, string connectionId, string userId, string auth = null)
         {
             var connectArg = new ConnectArgs
                                  {

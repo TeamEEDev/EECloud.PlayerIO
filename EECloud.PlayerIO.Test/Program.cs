@@ -46,7 +46,7 @@ namespace EECloud.PlayerIO.Test
         private static void WriteElapsedMilliseconds(string cause)
         {
             Console.Write(Environment.NewLine +
-                          "   " + cause + ": " + new string('.', Console.BufferWidth - cause.Length - Watch.ElapsedMilliseconds.ToString(Config.InvariantCulture).Length - 11) + " " +
+                          "   " + cause + ": " + new string('.', Math.Max(Console.BufferWidth - cause.Length - Watch.ElapsedMilliseconds.ToString(Config.InvariantCulture).Length - 11, 0)) + " " +
                           Watch.ElapsedMilliseconds + "ms");
             TotalElapsedMilliseconds += Watch.ElapsedMilliseconds;
         }

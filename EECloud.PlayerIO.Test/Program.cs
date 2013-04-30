@@ -10,6 +10,8 @@ namespace EECloud.PlayerIO.Test
 
         private static void Main()
         {
+            Console.Title = "EECloud.PlayerIO Test Application";
+
             do
             {
                 Console.CursorVisible = false;
